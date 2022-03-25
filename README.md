@@ -1,3 +1,3 @@
-## E-Commerce Backend
+## Halcyon Skin Store
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+This is a frontend E-Commerce Application created using the mock backend mockBee
