@@ -2,11 +2,11 @@ import "./footer.css";
 
 export default function Footer() {
   return (
-    <footer class="footer" id="footer">
-      <div class="footer-columns">
-        <span class="col">
-          <h3 class="col-title">Contact</h3>
-          <nav class="col-list">
+    <footer className="footer" id="footer">
+      <div className="footer-columns">
+        <span className="col">
+          <h3 className="col-title">Contact</h3>
+          <nav className="col-list">
             <ul>
               <li>
                 <a href="./">hello@halcyonskinstore.com</a>
@@ -21,9 +21,9 @@ export default function Footer() {
             </ul>
           </nav>
         </span>
-        <span class="col">
-          <h3 class="col-title">Explore</h3>
-          <nav class="col-list">
+        <span className="col">
+          <h3 className="col-title">Explore</h3>
+          <nav className="col-list">
             <ul>
               <li>
                 <a href="./Product List/product.html">All Products</a>
@@ -37,9 +37,9 @@ export default function Footer() {
             </ul>
           </nav>
         </span>
-        <span class="col">
-          <h3 class="col-title">Info</h3>
-          <nav class="col-list">
+        <span className="col">
+          <h3 className="col-title">Info</h3>
+          <nav className="col-list">
             <ul>
               <li>
                 <a href="#">About Us</a>
@@ -56,19 +56,19 @@ export default function Footer() {
             </ul>
           </nav>
         </span>
-        <span class="col">
-          <div class="subscribe-form-holder"></div>
-          <div class="social-media">
-            <h3 class="social-col-title">Follow</h3>
-            <ul class="social-media-list">
+        <span className="col">
+          <div className="subscribe-form-holder"></div>
+          <div className="social-media">
+            <h3 className="social-col-title">Follow</h3>
+            <ul className="social-media-list">
               <li>
                 <a href="https://github.com/bhavyaj12" target="_blank">
-                  <i class="fab fa-github "></i>
+                  <i className="fab fa-github "></i>
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/bhavzlearn" target="_blank">
-                  <i class="fab fa-twitter"></i>
+                  <i className="fab fa-twitter"></i>
                 </a>
               </li>
               <li>
@@ -76,34 +76,34 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/bhavya-joshi-438178184"
                   target="_blank"
                 >
-                  <i class="fab fa-linkedin"></i>
+                  <i className="fab fa-linkedin"></i>
                 </a>
               </li>
             </ul>
           </div>
-          <div class="social-media payment-logos">
-            <h3 class="social-col-title">We Support</h3>
-            <ul class="social-media-list">
+          <div className="social-media payment-logos">
+            <h3 className="social-col-title">We Support</h3>
+            <ul className="social-media-list">
               <li>
-                <i class="fab fa-cc-visa "></i>
+                <i className="fab fa-cc-visa "></i>
               </li>
               <li>
-                <i class="fab fa-cc-mastercard"></i>
+                <i className="fab fa-cc-mastercard"></i>
               </li>
               <li>
-                <i class="fab fa-amazon-pay"></i>
+                <i className="fab fa-amazon-pay"></i>
               </li>
               <li>
-                <i class="fab fa-google-pay"></i>
+                <i className="fab fa-google-pay"></i>
               </li>
             </ul>
           </div>
         </span>
       </div>
-      <div class="owner">
+      <div className="owner">
         <span>Made with 💜 by Bhavya Joshi</span>
       </div>
-      <div class="copyright mt-3">
+      <div className="copyright mt-3">
         &copy; All Rights Reserved 2022 Halcyon-Designs
       </div>
     </footer>

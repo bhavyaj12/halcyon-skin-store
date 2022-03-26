@@ -12,17 +12,17 @@ export default function LandingPage() {
     <div>
       <NavigationTop />
 
-      <section class="flex-col">
+      <section className="flex-col">
         <a href="/Product List/product.html">
           <img
             src={heroImg}
             alt="Hero Skincare Header"
-            class="hero-img img-responsive"
+            className="hero-img img-responsive"
           />
         </a>
-        <article class="home-intro container-center flex-col">
-          <p class="h4">Skincare simplified!</p>
-          <p class="txt-normal">
+        <article className="home-intro container-center flex-col">
+          <p className="h4">Skincare simplified!</p>
+          <p className="txt-normal">
             Inspired by the world's best skincare-making processes, Halcyon Skin
             Store focuses on curating the best of Indian beauty. We only carry
             products that combine powerful ingredients backed by years of
@@ -32,78 +32,78 @@ export default function LandingPage() {
         </article>
       </section>
 
-      <main class="home-main">
+      <main className="home-main">
         <section>
-          <p class="h3 text-center">Featured Categories</p>
-          <div class="categories-container mt-7">
-            <div class="card card-vertical ecomm-card card-shadow p-3">
-              <div class="img-badge-container">
+          <p className="h3 text-center">Featured Categories</p>
+          <div className="categories-container mt-7">
+            <div className="card card-vertical ecomm-card card-shadow p-3">
+              <div className="img-badge-container">
                 <img
                   src={featCardImg1}
                   alt="sunscreen sample"
-                  class="img-responsive vt-card-img"
+                  className="img-responsive vt-card-img"
                 />
               </div>
-              <div class="vt-card-text">
-                <p class="ecomm-card-heading">Sunscreen</p>
+              <div className="vt-card-text">
+                <p className="ecomm-card-heading">Sunscreen</p>
               </div>
             </div>
 
-            <div class="card card-vertical ecomm-card card-shadow p-3">
-              <div class="img-badge-container">
+            <div className="card card-vertical ecomm-card card-shadow p-3">
+              <div className="img-badge-container">
                 <img
                   src={featCardImg2}
                   alt="serum sample"
-                  class="img-responsive vt-card-img"
+                  className="img-responsive vt-card-img"
                 />
               </div>
-              <div class="vt-card-text">
-                <p class="ecomm-card-heading">Serums</p>
+              <div className="vt-card-text">
+                <p className="ecomm-card-heading">Serums</p>
               </div>
             </div>
 
-            <div class="card card-vertical ecomm-card card-shadow p-3">
-              <div class="img-badge-container">
+            <div className="card card-vertical ecomm-card card-shadow p-3">
+              <div className="img-badge-container">
                 <img
                   src={featCardImg3}
                   alt="moisturizer sample"
-                  class="img-responsive vt-card-img"
+                  className="img-responsive vt-card-img"
                 />
               </div>
-              <div class="vt-card-text">
-                <p class="ecomm-card-heading">Moisturizers</p>
+              <div className="vt-card-text">
+                <p className="ecomm-card-heading">Moisturizers</p>
               </div>
             </div>
 
-            <div class="card card-vertical ecomm-card card-shadow p-3">
-              <div class="img-badge-container">
+            <div className="card card-vertical ecomm-card card-shadow p-3">
+              <div className="img-badge-container">
                 <img
                   src={featCardImg4}
                   alt="cleanser sample"
-                  class="img-responsive vt-card-img"
+                  className="img-responsive vt-card-img"
                 />
               </div>
-              <div class="vt-card-text">
-                <p class="ecomm-card-heading">Cleanser</p>
+              <div className="vt-card-text">
+                <p className="ecomm-card-heading">Cleanser</p>
               </div>
             </div>
 
-            <div class="card card-vertical ecomm-card card-shadow p-3">
-              <div class="img-badge-container">
+            <div className="card card-vertical ecomm-card card-shadow p-3">
+              <div className="img-badge-container">
                 <img
                   src={featCardImg5}
                   alt="bodycare sample"
-                  class="img-responsive vt-card-img"
+                  className="img-responsive vt-card-img"
                 />
               </div>
-              <div class="vt-card-text">
-                <p class="ecomm-card-heading my-1">Bodycare</p>
+              <div className="vt-card-text">
+                <p className="ecomm-card-heading my-1">Bodycare</p>
               </div>
             </div>
           </div>
         </section>
-        <a href="#" class="button button-floating">
-          <i class="fas fa-arrow-up"></i>
+        <a href="#" className="button button-floating">
+          <i className="fas fa-arrow-up"></i>
         </a>
       </main>
 
