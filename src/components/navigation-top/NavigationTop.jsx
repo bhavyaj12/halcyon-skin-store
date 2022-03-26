@@ -4,29 +4,29 @@ import storeLogo from "../../assets/images/HalcyonStoreLogo.png";
 export default function NavigationTop() {
   return (
     <header id="header">
-      <nav class="store-nav-bar">
-        <div class="store-logo-box">
+      <nav className="store-nav-bar">
+        <div className="store-logo-box">
           <a href="./">
-            <img src={storeLogo} alt="logo" class="store-logo" />
+            <img src={storeLogo} alt="logo" className="store-logo" />
           </a>
         </div>
-        <div class="store-nav">
-          <ul class="store-nav-links ul-no-decor display-flex">
-            <li class="search-bar">
+        <div className="store-nav">
+          <ul className="store-nav-links ul-no-decor display-flex">
+            <li className="search-bar">
               <input type="search" placeholder="Search our skincare store " />
-              <label class="search-bar-icon">
-                <span class="fas fa-search"></span>
+              <label className="search-bar-icon">
+                <span className="fas fa-search"></span>
               </label>
             </li>
             <li>
-              <a href="./" class="button button-primary button-link active">
+              <a href="./" className="button button-primary button-link active">
                 Home
               </a>
             </li>
             <li>
               <a
                 href="./Product List/product.html"
-                class="button button-primary button-link"
+                className="button button-primary button-link"
               >
                 Shop Now
               </a>
@@ -34,24 +34,24 @@ export default function NavigationTop() {
             <li>
               <a
                 href="./Authentication/login.html"
-                class="button button-primary button-link"
+                className="button button-primary button-link"
               >
-                <i class="fas fa-user"></i>Account
+                <i className="fas fa-user"></i>Account
               </a>
             </li>
             <li>
               <a href="./Wishlist/wishlist.html">
-                <div class="badge mx-4 ">
-                  <i class="fas fa-heart"></i>
-                  <div class="badge-no">0</div>
+                <div className="badge mx-4 ">
+                  <i className="fas fa-heart"></i>
+                  <div className="badge-no">0</div>
                 </div>
               </a>
             </li>
             <li>
               <a href="./Cart/cart.html">
-                <div class="badge mx-4 ">
-                  <i class="fas fa-shopping-cart"></i>
-                  <div class="badge-no">0</div>
+                <div className="badge mx-4 ">
+                  <i className="fas fa-shopping-cart"></i>
+                  <div className="badge-no">0</div>
                 </div>
               </a>
             </li>
