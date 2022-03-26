@@ -1,0 +1,123 @@
+footer {
+    background: var(--footer-color);
+    padding: 4rem 15rem;
+    font-size: 1.2rem;
+}
+
+.footer-columns {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: var(--size-1-5);
+}
+
+footer ul {
+    list-style: none;
+}
+
+.col {
+    flex: 1;
+}
+
+.col-title {
+    color: var(--white-bg);
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: var(--size-0-5) 0;
+}
+
+.col-list a {
+    color: var(--grey-bg);
+    text-decoration: none;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.col-list a:hover {
+    color: var(--secondary-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.col-list li {
+    color: var(--grey-bg);
+    line-height: 1.5;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.social-media {
+    display: flex;
+}
+
+.social-col-title {
+    color: var(--white-bg);
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: var(--size-0-5) 0;
+}
+
+.social-media {
+    flex-direction: column;
+}
+
+.social-media-list {
+    display: flex;
+    gap: var(--size-0-5);
+}
+
+.social-media-list a {
+    padding: var(--size-0-5);
+    color: var(--grey-bg);
+    display: flex;
+    border-radius: 0.2rem;
+    text-decoration: none;
+}
+
+.social-media-list a:hover {
+    color: var(--secondary-color);
+    transition: all 0.2s ease-in-out;
+}
+
+.social-media-list .fab {
+    font-size: var(--size-1-5);
+    transition: all 0.25s ease 0s;
+}
+
+.payment-logos {
+    margin-top: var(--size-1-5);
+}
+
+.payment-logos i {
+    padding: var(--size-0-5);
+    color: var(--grey-bg);
+    display: flex;
+}
+
+.payment-logos .fab {
+    font-size: var(--size-2-5);
+}
+
+.copyright {
+    text-align: center;
+    color: var(--white-bg);
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--size-1);
+}
+
+.owner {
+    text-align: center;
+    margin-top: var(--size-2);
+    color: var(--white-bg);
+}
+
+.owner a {
+    color: var(--white-bg);
+}
+
+@media screen and (max-width: 750px) {
+    footer {
+        padding: var(--size-2);
+        flex-direction: column;
+    }
+}
