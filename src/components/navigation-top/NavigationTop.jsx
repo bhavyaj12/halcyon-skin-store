@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./navigation-top.css";
 import storeLogo from "../../assets/images/HalcyonStoreLogo.png";
 
@@ -6,9 +7,9 @@ export default function NavigationTop() {
     <header id="header">
       <nav className="store-nav-bar">
         <div className="store-logo-box">
-          <a href="./">
+          <Link to="/">
             <img src={storeLogo} alt="logo" className="store-logo" />
-          </a>
+          </Link>
         </div>
         <div className="store-nav">
           <ul className="store-nav-links ul-no-decor display-flex">
@@ -19,41 +20,35 @@ export default function NavigationTop() {
               </label>
             </li>
             <li>
-              <a href="./" className="button button-primary button-link active">
+              <Link to="/" className="button button-primary button-link active">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="./Product List/product.html"
-                className="button button-primary button-link"
-              >
+              <Link to="/products" className="button button-primary button-link">
                 Shop Now
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="./Authentication/login.html"
-                className="button button-primary button-link"
-              >
-                <i className="fas fa-user"></i>Account
-              </a>
+              <Link to="/login" className="button button-primary button-link">
+                  <i className="fas fa-user"></i>Account
+              </Link>
             </li>
             <li>
-              <a href="./Wishlist/wishlist.html">
+              <Link to="/wishlist">
                 <div className="badge mx-4 ">
                   <i className="fas fa-heart"></i>
                   <div className="badge-no">0</div>
                 </div>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="./Cart/cart.html">
+              <Link to="/cart">
                 <div className="badge mx-4 ">
                   <i className="fas fa-shopping-cart"></i>
                   <div className="badge-no">0</div>
                 </div>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

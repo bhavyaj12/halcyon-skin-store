@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./footer.css";
 
 export default function Footer() {
@@ -9,13 +10,13 @@ export default function Footer() {
           <nav className="col-list">
             <ul>
               <li>
-                <a href="./">hello@halcyonskinstore.com</a>
+                <Link to="/">hello@halcyonskinstore.com</Link>
               </li>
               <li>
-                <a href="./">Chat with Us</a>
+                <Link to="/">Chat with Us</Link>
               </li>
               <li>
-                <a href="./">Call Us</a>
+                <Link to="/">Call Us</Link>
               </li>
               <li>Weekdays 09:00 - 17:00 Weekends 11:00 - 16:00</li>
             </ul>
@@ -26,13 +27,13 @@ export default function Footer() {
           <nav className="col-list">
             <ul>
               <li>
-                <a href="./Product List/product.html">All Products</a>
+                <Link to="/products" href="./Product List/product.html">All Products</Link>
               </li>
               <li>
-                <a href="./Cart/cart.html">Cart</a>
+                <Link to="/cart" href="./Cart/cart.html">Cart</Link>
               </li>
               <li>
-                <a href="./Wishlist/wishlist.html">Wishlist</a>
+                <Link to="/wishlist" href="./Wishlist/wishlist.html">Wishlist</Link>
               </li>
             </ul>
           </nav>
@@ -42,16 +43,16 @@ export default function Footer() {
           <nav className="col-list">
             <ul>
               <li>
-                <a href="#">About Us</a>
+                <Link to="/">About Us</Link>
               </li>
               <li>
-                <a href="#">Sustainability</a>
+                <Link to="/">Sustainability</Link>
               </li>
               <li>
-                <a href="#">Shipping Policy</a>
+                <Link to="/">Shipping Policy</Link>
               </li>
               <li>
-                <a href="#">Privacy</a>
+                <Link to="/">Privacy</Link>
               </li>
             </ul>
           </nav>
