@@ -1,0 +1,124 @@
+#header {
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.06);
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    position: sticky;
+}
+
+.store-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--size-0-5) var(--size-2);
+    background-color: var(--nav-bg);
+}
+
+.store-logo {
+    max-width: 10rem;
+}
+
+.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+}
+
+.store-nav ul li.search-bar {
+    width: 20rem;
+}
+
+.store-nav-bar .store-nav .fas {
+    color: var(--font-color);
+    font-size: 1.2rem;
+}
+
+.store-nav .search-bar {
+    height: var(--size-2);
+    display: flex;
+    background: var(--search-bg);
+    border-radius: 0.2rem;
+    margin: 0 var(--size-3);
+    border: 1px solid var(--search-border);
+}
+
+.store-nav .search-bar input {
+    height: 100%;
+    width: 90%;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0 var(--size-1);
+    font-size: var(--size-1);
+    outline: none;
+}
+
+.store-nav .store-nav-links .search-bar .search-bar-icon {
+    height: 100%;
+    width: var(--size-2);
+    text-align: center;
+    line-height: var(--size-2);
+    border-left: 1px solid var(--search-border);
+}
+
+.store-nav .store-nav-links .search-bar .search-bar-icon span {
+    color: var(--gray-txt);
+}
+
+.store-nav-bar .store-nav .badge .badge-no {
+    background-color: var(--cta-color);
+    min-width: var(--size-1);
+    min-height: var(--size-1);
+    height: 16px;
+    width: 16px;
+    left: 0.4rem;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 1px solid var(--white-bg);
+}
+
+.store-nav-bar .store-nav .store-nav-links li .button {
+    margin: var(--size-0-5);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: 0.4s ease;
+}
+
+.store-nav-bar .store-nav .store-nav-links li {
+    position: relative;
+}
+
+.store-nav-bar .store-nav .store-nav-links li .button.active {
+    color: var(--cta-color);
+}
+
+.store-nav-bar .store-nav .store-nav-links li .button.button-link:hover {
+    color: var(--font-color);
+}
+
+.store-nav-bar .store-nav .store-nav-links li .button.button-link.active:hover {
+    color: var(--cta-color);
+}
+
+.store-nav-bar .store-nav .store-nav-links li .button.active::after,
+.store-nav-bar .store-nav .store-nav-links li .button:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: var(--cta-color);
+    position: absolute;
+    bottom: -4px;
+    left: var(--size-1-5);
+}
+
+@media screen and (max-width: 1125px) {
+
+    .store-nav ul li.search-bar {
+        width: 8rem;
+    }
+}
