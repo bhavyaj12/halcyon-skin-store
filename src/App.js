@@ -1,9 +1,12 @@
-import { LandingPage } from "./pages";
+import { Routes } from "./routes";
+import { Footer, NavigationTop } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <LandingPage />
+      <NavigationTop />
+      <Routes />
+      <Footer />
     </div>
   );
 }
