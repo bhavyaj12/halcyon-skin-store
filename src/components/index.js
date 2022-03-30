@@ -4,8 +4,4 @@ import ProductCard from "./product-card/ProductCard";
 import Filters from "./filters/Filters";
 import ProductList from "./product-list/ProductList"
 
-export { NavigationTop };
-export { Footer };
-export { ProductCard };
-export { Filters };
-export { ProductList };
+export { NavigationTop, Footer, ProductCard, Filters, ProductList };
