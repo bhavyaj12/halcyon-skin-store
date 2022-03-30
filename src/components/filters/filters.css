@@ -1,0 +1,61 @@
+.heading-filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--size-0-5);
+  }
+  
+  .heading-filter p {
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding: var(--size-0-5) var(--size-1);
+  }
+  
+  .filter-container {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.07);
+    width: fit-content;
+    padding-bottom: 10rem;
+    height: 100%;
+    padding-top: var(--size-3);
+  }
+  
+  .filter-container button {
+    border: none;
+    background-color: var(--white-bg);
+  }
+  
+  .filter-type-container {
+    margin: 2rem;
+  }
+  
+  .filter-name {
+    margin: 1rem;
+    font-weight: 600;
+  }
+  
+  .filter-content {
+    margin: 1rem;
+  }
+  
+  .filter-content #price-slider {
+    margin: 1rem 0.5rem 0rem 0rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #price-slider {
+    height: 10px;
+  }
+  
+  /* component library overrides */
+  
+  .filter-container .heading-filter button.filter-clear-btn {
+    margin: 0;
+    font-size: var(--size-1);
+  }
+  
+  .filter-type-container.filter-ratings .fas {
+    color: var(--star-color);
+  }
+  
