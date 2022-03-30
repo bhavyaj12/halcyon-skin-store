@@ -56,6 +56,6 @@
   }
   
   .filter-type-container.filter-ratings .fas {
-    color: #ffdd1c;
+    color: var(--star-color);
   }
   
