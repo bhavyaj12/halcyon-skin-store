@@ -23,9 +23,6 @@ export default function WishlistCard({ product }) {
     <div className="card card-vertical card-shadow" id={_id}>
       <div className="p-3 img-badge-container">
         {tag && <span className="vt-card-badge txt-small p-3">{tag}</span>}
-        <span className="vt-card-badge txt-small p-3 wishlist-badge">
-          <i className="fa fa-heart"></i>
-        </span>
         <img
           src={coverImg}
           alt="Purple Soap"

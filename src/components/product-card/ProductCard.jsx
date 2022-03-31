@@ -119,7 +119,7 @@ export default function ProductCard({ product }) {
               onClick={() =>
                 wishDispatch({
                   type: "REMOVE_FROM_WISHLIST",
-                  payload: product,
+                  payload: _id,
                 })
               }
             >
