@@ -13,7 +13,7 @@ export default function ProductList({ products }) {
       <section className="products-container">
         {products.length > 0 ? (
           products.map((item) => {
-            return <ProductCard product={item} />;
+            return <ProductCard product={item} key={item._id}/>;
           })
         ) : (
           <p className="alert-container alert-error txt-medium">
