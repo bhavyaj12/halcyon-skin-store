@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import Mockman from "mockman-js";
 import { LandingPage, CartPage, LoginPage, LogoutPage, ProductsPage, SignupPage, WishlistPage } from '../pages/';
 
 export default function SiteRoutes() {
@@ -11,6 +12,12 @@ export default function SiteRoutes() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/mock" element={
+                <Mockman>
+
+                </Mockman>
+            }
+            />
         </Routes>
     );
 }

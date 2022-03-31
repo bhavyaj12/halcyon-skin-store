@@ -1,5 +1,3 @@
-import "./products-page.css";
-
 import axios from "axios";
 import { useEffect } from "react";
 import {
@@ -11,6 +9,7 @@ import {
 import { useProduct } from "../../contexts";
 import { Filters } from "../../components";
 import { ProductList } from "../../components";
+import "./products-page.css";
 
 export default function ProductsPage() {
   const { state, dispatch } = useProduct();
@@ -42,7 +41,7 @@ export default function ProductsPage() {
   return (
     <main className="products-filters-page">
       <Filters />
-      <ProductList products={finalProducts}/>
+      <ProductList products={finalProducts} />
     </main>
   );
 }
