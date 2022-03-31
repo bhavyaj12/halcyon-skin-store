@@ -50,12 +50,14 @@ main {
   justify-content: space-around;
 }
 
-.products-container .card.card-vertical .card-vt-btn .button.button-primary {
+.products-container .card.card-vertical .card-vt-btn .button.button-primary,
+.wishlist-container .card.card-vertical .card-vt-btn .button.button-primary {
   min-width: 30%;
   width: 60%;
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
+  border: none;
 }
 
 .products-container .card.card-vertical .card-vt-btn .button.button-secondary {
