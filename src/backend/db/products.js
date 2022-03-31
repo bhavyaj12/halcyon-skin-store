@@ -64,7 +64,7 @@ export const products = [
     originalPrice: 399,
     discountRate: 19,
     tag: "",
-    inStock: true,
+    inStock: false,
     coverImg: Sunscreen3,
     categoryName: "Sunscreen",
   },
