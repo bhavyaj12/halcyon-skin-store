@@ -26,6 +26,10 @@ export default function ProductsPage() {
   const finalProducts = sortedProducts(ratingFiltered, state.sortBy);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
+  useEffect(() => {
     (async () => {
       try {
         const {

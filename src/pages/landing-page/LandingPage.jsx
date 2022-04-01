@@ -100,9 +100,6 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-        <Link to="/" className="button button-floating">
-          <i className="fas fa-arrow-up"></i>
-        </Link>
       </main>
     </div>
   );
