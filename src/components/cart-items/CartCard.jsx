@@ -29,7 +29,7 @@ export default function CartCard({ product }) {
         />
       </div>
       <div className="hz-card-text p-3">
-        <h5>{name}</h5>
+        <h5 className="h5">{name}</h5>
         <p>{brand}</p>
         <div className="mt-5 card-price">
           <span className="d-inline">₹ {discountPrice}</span>

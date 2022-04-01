@@ -14,7 +14,7 @@ export default function CartPrice() {
   return (
     <div className="cart-checkout px-5">
       <div className="card card-text-only card-flex">
-        <h5>Price Details</h5>
+        <h5 className="h5">Price Details</h5>
         <div className="cart-price-row">
           <p>Items in your bag</p>
           <p>{cartState.cart.length}</p>

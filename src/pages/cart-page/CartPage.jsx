@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { CartCard, CartPrice } from "../../components";
 import { useCart } from "../../contexts";
-import "../../styles/main.css";
 import "./cart.css";
 
 export default function CartPage() {
@@ -9,7 +8,7 @@ export default function CartPage() {
   return (
     <main className="cart-main-container">
       <div className="cart-heading container-center my-8">
-        <h4>My Cart</h4>
+        <h2 className="h2">My Cart</h2>
       </div>
       <section className="cart-cards-container">
         <div className="cart-items">
