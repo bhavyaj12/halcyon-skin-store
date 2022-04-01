@@ -1,0 +1,15 @@
+.link-router {
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.products-container .card.card-vertical .card-vt-btn {
+    justify-content: left;
+}
+
+.products-container .card.card-vertical .button.btn-solid.button-primary.btn-go-to-cart  {
+    width: 70%;
+}
