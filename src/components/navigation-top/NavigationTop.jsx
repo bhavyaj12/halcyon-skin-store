@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import storeLogo from "../../assets/images/HalcyonStoreLogo.png";
-import { useWishlist } from "../../contexts";
+import { useWishlist, useCart } from "../../contexts";
 import "./navigation-top.css";
 
 
 export default function NavigationTop() {
+  const { cartState } = useCart();
   const { wishState } = useWishlist();
   return (
     <header id="header">
@@ -49,7 +50,7 @@ export default function NavigationTop() {
               <Link to="/cart">
                 <div className="badge mx-4 ">
                   <i className="fas fa-shopping-cart"></i>
-                  <div className="badge-no">24</div>
+                  <div className="badge-no">{cartState.cart.length}</div>
                 </div>
               </Link>
             </li>

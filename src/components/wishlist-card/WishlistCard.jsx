@@ -1,4 +1,5 @@
-import { useWishlist } from "../../contexts";
+import { Link } from "react-router-dom";
+import { useWishlist, useCart } from "../../contexts";
 import "../../styles/main.css";
 import "../../components/product-list/product-list.css";
 
@@ -13,11 +14,11 @@ export default function WishlistCard({ product }) {
     originalPrice,
     discountRate,
     tag,
-    inStock,
     coverImg,
     categoryName,
   } = product;
   const { wishDispatch } = useWishlist();
+  const { cartState, cartDispatch } = useCart();
   const discountValid = discountRate === 0 ? false : true;
   return (
     <div className="card card-vertical card-shadow" id={_id}>
@@ -25,7 +26,7 @@ export default function WishlistCard({ product }) {
         {tag && <span className="vt-card-badge txt-small p-3">{tag}</span>}
         <img
           src={coverImg}
-          alt="Purple Soap"
+          alt="Wishlist Item Photo"
           className="img-responsive vt-card-img"
         />
       </div>
@@ -53,12 +54,25 @@ export default function WishlistCard({ product }) {
           </span>
         </div>
         <div className="card-vt-btn mt-5 ">
-          <button className="button button-primary button-text-icon ">
-            <span>
-              <i className="fas fa-shopping-cart"></i>
-              Add to Cart
-            </span>
-          </button>
+          {cartState.cart.find((item) => item._id === _id) ? (
+            <Link to="/cart" className="link-router">
+              <button className="button btn-solid button-primary btn-go-to-cart">
+                Go to Cart
+              </button>
+            </Link>
+          ) : (
+            <button
+              className="button button-primary button-text-icon"
+              onClick={() =>
+                cartDispatch({ type: "ADD_TO_CART", payload: product })
+              }
+            >
+              <span>
+                <i className="fas fa-shopping-cart"></i> Move to Cart
+              </span>
+            </button>
+          )}
+
           <button
             className="button btn-outline button-secondary"
             onClick={() =>

@@ -1,0 +1,104 @@
+/* @import url(https://halcyon-ui.netlify.app/halcyon.css); */
+
+.cart-items {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid var(--grey-bg);
+}
+
+.cart-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 75rem;
+    width: 100%;
+    margin: 0 auto 5rem;
+}
+
+.card.card-hz .hz-card-img {
+    max-width: 15rem;
+    height: 22rem;
+    object-fit: cover;
+}
+
+.cart-cards-container .card.card-hz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white-color);
+    height: fit-content;
+    max-height: 25rem;
+}
+
+.cart-checkout {
+    width: 40%;
+}
+
+.cart-checkout h5 {
+    font-weight: 600;
+}
+
+.cart-checkout p:not(.cart-total) {
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cart-cards-container .cart-checkout .card.card-text-only.card-flex div:nth-child(6) {
+    border-top: 1px solid var(--grey-bg);
+    border-bottom: 1px solid var(--grey-bg);
+}
+
+
+.cart-cards-container .card.card-text-only {
+    background-color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 90%;
+    width: 40rem;
+    border: 1px solid var(--grey-bg);
+}
+
+.cart-price-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cart-price-row .button {
+    margin: 0;
+    margin-left: auto;
+}
+
+.card.card-hz .cart-quantity-container {
+    display: inline-flex;
+}
+
+.card.card-hz .button.button-primary {
+    border: none;
+}
+
+.card.card-hz .cart-quantity-container .button.btn-outline.button-secondary {
+    margin: 2rem 1rem 0 0;
+    min-width: 0;
+    width: fit-content;
+    background-color: transparent;
+}
+
+.card.card-hz .button.btn-outline.button-secondary{
+    background-color: transparent;
+}
+
+.cart-cards-container .card.card-hz .cart-quantity-container .button .fas, .cart-cards-container .card.card-hz .cart-quantity-container .button .fab, .cart-cards-container .card.card-hz .cart-quantity-container .button .far {
+    margin: 0;
+}
+
+.cart-quantity-container .button.quant-btn{
+    border-radius: 1rem;
+}
+
+
+
+

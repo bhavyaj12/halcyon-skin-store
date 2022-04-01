@@ -1,4 +1,6 @@
-import { useWishlist } from "../../contexts";
+import { Link } from "react-router-dom";
+import { useWishlist, useCart } from "../../contexts";
+import "./product-card.css";
 
 export default function ProductCard({ product }) {
   const {
@@ -16,6 +18,7 @@ export default function ProductCard({ product }) {
     categoryName,
   } = product;
   const { wishState, wishDispatch } = useWishlist();
+  const { cartState, cartDispatch } = useCart();
 
   const discountValid = discountRate === 0 ? false : true;
   if (!inStock) {
@@ -106,13 +109,27 @@ export default function ProductCard({ product }) {
             {categoryName}
           </span>
         </div>
-        <div className="card-vt-btn mt-5 ">
-          <button className="button button-primary button-text-icon ">
-            <span>
-              <i className="fas fa-shopping-cart"></i>
-              Add to Cart
-            </span>
-          </button>
+        <div className="card-vt-btn mt-5">
+          {cartState.cart.find((item) => item._id === _id) ? (
+            <Link to="/cart" className="link-router">
+                <button className="button btn-solid button-primary btn-go-to-cart">
+                  Go to Cart
+                </button>
+            </Link>
+          ) : (
+            <button
+              className="button button-primary button-text-icon"
+              onClick={() =>
+                cartDispatch({ type: "ADD_TO_CART", payload: product })
+              }
+            >
+              <span>
+                <i className="fas fa-shopping-cart"></i>
+                Add to Cart
+              </span>
+            </button>
+          )}
+
           {wishState.wishlist.find((prod) => prod._id === _id) ? (
             <button
               className="button btn-outline button-secondary"
