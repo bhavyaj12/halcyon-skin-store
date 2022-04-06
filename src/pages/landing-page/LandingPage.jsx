@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import "./landing.css";
 import heroImg from "../../assets/images/LandingPage/hero-img.png";
 import featCardImg1 from "../../assets/images/LandingPage/feat-cat-sun.jpg";
@@ -8,6 +9,10 @@ import featCardImg4 from "../../assets/images/LandingPage/feat-cat-clean.png";
 import featCardImg5 from "../../assets/images/LandingPage/feat-cat-body.jpg";
 
 export default function LandingPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <section className="flex-col">
@@ -33,71 +38,82 @@ export default function LandingPage() {
       <main className="home-main">
         <section>
           <p className="h3 text-center">Featured Categories</p>
+
           <div className="categories-container mt-7">
-            <div className="card card-vertical ecomm-card card-shadow p-3">
-              <div className="img-badge-container">
-                <img
-                  src={featCardImg1}
-                  alt="sunscreen sample"
-                  className="img-responsive vt-card-img"
-                />
+            <Link to="/products" className="link-no-decor router-link">
+              <div className="card card-vertical ecomm-card card-shadow p-3">
+                <div className="img-badge-container">
+                  <img
+                    src={featCardImg1}
+                    alt="sunscreen sample"
+                    className="img-responsive vt-card-img"
+                  />
+                </div>
+                <div className="vt-card-text">
+                  <p className="ecomm-card-heading">Sunscreen</p>
+                </div>
               </div>
-              <div className="vt-card-text">
-                <p className="ecomm-card-heading">Sunscreen</p>
-              </div>
-            </div>
+            </Link>
 
-            <div className="card card-vertical ecomm-card card-shadow p-3">
-              <div className="img-badge-container">
-                <img
-                  src={featCardImg2}
-                  alt="serum sample"
-                  className="img-responsive vt-card-img"
-                />
+            <Link to="/products" className="link-no-decor router-link">
+              <div className="card card-vertical ecomm-card card-shadow p-3">
+                <div className="img-badge-container">
+                  <img
+                    src={featCardImg2}
+                    alt="serum sample"
+                    className="img-responsive vt-card-img"
+                  />
+                </div>
+                <div className="vt-card-text">
+                  <p className="ecomm-card-heading">Serums</p>
+                </div>
               </div>
-              <div className="vt-card-text">
-                <p className="ecomm-card-heading">Serums</p>
-              </div>
-            </div>
+            </Link>
 
-            <div className="card card-vertical ecomm-card card-shadow p-3">
-              <div className="img-badge-container">
-                <img
-                  src={featCardImg3}
-                  alt="moisturizer sample"
-                  className="img-responsive vt-card-img"
-                />
+            <Link to="/products" className="link-no-decor router-link">
+              <div className="card card-vertical ecomm-card card-shadow p-3">
+                <div className="img-badge-container">
+                  <img
+                    src={featCardImg3}
+                    alt="moisturizer sample"
+                    className="img-responsive vt-card-img"
+                  />
+                </div>
+                <div className="vt-card-text">
+                  <p className="ecomm-card-heading">Moisturizers</p>
+                </div>
               </div>
-              <div className="vt-card-text">
-                <p className="ecomm-card-heading">Moisturizers</p>
-              </div>
-            </div>
+            </Link>
 
-            <div className="card card-vertical ecomm-card card-shadow p-3">
-              <div className="img-badge-container">
-                <img
-                  src={featCardImg4}
-                  alt="cleanser sample"
-                  className="img-responsive vt-card-img"
-                />
+            <Link to="/products" className="link-no-decor router-link">
+              <div className="card card-vertical ecomm-card card-shadow p-3">
+                <div className="img-badge-container">
+                  <img
+                    src={featCardImg4}
+                    alt="cleanser sample"
+                    className="img-responsive vt-card-img"
+                  />
+                </div>
+                <div className="vt-card-text">
+                  <p className="ecomm-card-heading">Cleanser</p>
+                </div>
               </div>
-              <div className="vt-card-text">
-                <p className="ecomm-card-heading">Cleanser</p>
-              </div>
-            </div>
+            </Link>
 
-            <div className="card card-vertical ecomm-card card-shadow p-3">
-              <div className="img-badge-container">
-                <img
-                  src={featCardImg5}
-                  alt="bodycare sample"
-                  className="img-responsive vt-card-img"
-                />
+            <Link to="/products" className="link-no-decor router-link">
+              <div className="card card-vertical ecomm-card card-shadow p-3">
+                <div className="img-badge-container">
+                  <img
+                    src={featCardImg5}
+                    alt="bodycare sample"
+                    className="img-responsive vt-card-img"
+                  />
+                </div>
+                <div className="vt-card-text">
+                  <p className="ecomm-card-heading my-1">Bodycare</p>
+                </div>
               </div>
-              <div className="vt-card-text">
-                <p className="ecomm-card-heading my-1">Bodycare</p>
-              </div>
-            </div>
+            </Link>
           </div>
         </section>
       </main>

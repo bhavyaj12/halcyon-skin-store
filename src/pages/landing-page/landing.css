@@ -17,6 +17,10 @@ section .hero-text-container .button.btn-solid.button-secondary.shop-cta:hover {
     background-color: var(--secondary-light);
 }
 
+.router-link {
+    color: var(--font-color);
+}
+
 .home-intro {
     background-color: var(--secondary-light);
     padding: 4rem 12rem;
