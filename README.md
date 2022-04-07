@@ -4,6 +4,12 @@
 
 Halcyon Skin Store is your one stop shop for all things skincare! Inspired by the world's best skincare-making processes, Halcyon Skin Store focuses on curating the best of Indian beauty. We only carry products that combine powerful ingredients backed by years of research & testing. Build a consistent self-care routine for your skin type and preferences from the wide range of products we offer.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/253379a2-f2b1-4020-b4bb-3c7cc5550487/deploy-status)](https://app.netlify.com/sites/halcyonskinstore/deploys)
+
+## Preview
+
+https://user-images.githubusercontent.com/59730227/162255225-e83826cc-6d95-4e08-85b5-5689a7df5f2f.mp4
+
 ## Project Features
 - It is made using [Halcyon-UI](https://github.com/bhavyaj12/HalcyonUI)
 - This is a frontend E-Commerce Application created using the mock backend mockBee.
@@ -43,9 +49,6 @@ Halcyon Skin Store is your one stop shop for all things skincare! Inspired by th
 - Single Product Page
 - Address Management
 - Profile Page
-
-
-<!-- [![Netlify Status]] -->
 
 ## Tech Stack
 - JavaScript
