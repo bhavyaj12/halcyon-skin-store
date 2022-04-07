@@ -1,0 +1,34 @@
+.form-container p {
+  color: var(--gray-txt);
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.form-container .pswrd-match {
+  color: var(--error-msg);
+  font-size: 1rem;
+}
+
+.form-row label {
+  width: 30%;
+  font-weight: bold;
+  color: var(--gray-txt);
+}
+
+.form-row .input-field {
+  width: 60%;
+  margin-left: auto;
+}
+
+.form-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-row .hide-pswrd {
+  width: 60%;
+}
+
+.form-row .hide-pswrd .input-field {
+  width: 100%;
+}

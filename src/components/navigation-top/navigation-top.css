@@ -84,7 +84,7 @@
 .store-nav-bar .store-nav .store-nav-links li .button {
     margin: var(--size-0-5);
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     transition: 0.4s ease;
 }
@@ -102,6 +102,23 @@
     transition: 0.4s ease;
 }
 
+.button.button-primary.btn-solid.logout-btn {
+    width: 30%;
+    margin: auto;
+    background: var(--logout-btn);
+    border: var(--logout-btn);
+    padding: var(--size-1);
+}
+
+.store-nav-bar .store-nav .store-nav-links .button.button-primary.btn-solid.logout-btn:hover::after {
+    background: transparent;
+}
+
+.store-nav-bar .store-nav .store-nav-links .button.button-primary.btn-solid.logout-btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
 .store-nav-bar .store-nav .store-nav-links li .button:hover::after {
     content: "";
     width: 30%;
@@ -113,7 +130,6 @@
 }
 
 @media screen and (max-width: 1125px) {
-
     .store-nav ul li.search-bar {
         width: 8rem;
     }
