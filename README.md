@@ -38,9 +38,11 @@ Halcyon Skin Store is your one stop shop for all things skincare! Inspired by th
 > - If the cart already contains that item, it's only increasing the quantity.
 
 ## Features to be added (Work in Progress)
-- Sign-up Page from where user can sign-up using email, first name, last name, password & confirm password.
-- Login Page from where user can log in using email & password.
-- Logout button from where user can log out from the app on the header navbar.
+- Cart and Wishlist according to user logged in (Right now it's implemented for current session without API calls)
+- Payment integration
+- Single Product Page
+- Address Management
+- Profile Page
 
 
 <!-- [![Netlify Status]] -->
