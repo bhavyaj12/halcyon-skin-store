@@ -1,18 +1,21 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useToast } from "../../custom-hooks";
 import {
   filteredCatProducts,
   filteredPriceProducts,
   sortedProducts,
   filteredRatingProducts,
 } from "../../utilities/filterFunctions.js";
-import { useProduct } from "../../contexts";
+import { useAuth, useProduct } from "../../contexts";
 import { Filters } from "../../components";
 import { ProductList } from "../../components";
 import "./products-page.css";
 
 const ProductsPage = () => {
   const { state, dispatch } = useProduct();
+  const { auth: token } = useAuth();
+  const { showToast } = useToast();
   const filteredPrice = filteredPriceProducts(state.products, state.price);
   const filteredCategory = filteredCatProducts(
     filteredPrice,
@@ -37,10 +40,10 @@ const ProductsPage = () => {
         } = await axios.get("/api/products");
         dispatch({ type: "INIT_PRODUCTS", payload: products });
       } catch (error) {
-        console.log(error);
+        showToast("error", "Can't fetch products, try again later.")
       }
     })();
-  }, []);
+  }, [token]);
 
   return (
     <main className="products-filters-page">

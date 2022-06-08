@@ -15,9 +15,9 @@ const WishlistPage = () => {
         <h4 className="h4">My Wishlist ({wishState.wishlist.length})</h4>
       </div>
       {wishState.wishlist.length === 0 ? (
-        <main className="wishlist-container page-container">
+        <main className="page-container wishlist-alert">
           <div className="alert-container alert-error txt-normal">
-            No items in Wishlist
+            No items in Wishlist, add from Shop Now
           </div>
         </main>
       ) : (
