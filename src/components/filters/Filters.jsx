@@ -2,7 +2,7 @@ import "./filters.css";
 
 import { useProduct } from "../../contexts";
 
-export default function Filters() {
+const Filters = () => {
   const { state, dispatch } = useProduct();
   const { sortBy, categories, price, rating } = state;
   const { Sunscreen, Serums, Moisturizers, Cleanser, Bodycare } = categories;
@@ -208,4 +208,6 @@ export default function Filters() {
       </aside>
     </section>
   );
-}
+};
+
+export default Filters;

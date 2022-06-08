@@ -1,69 +1,69 @@
 .hero-img {
-    width: 100%;
-    max-height: 35rem;
-    object-fit: cover;
-    position: relative;
+  width: 100%;
+  max-height: 35rem;
+  object-fit: cover;
+  position: relative;
 }
 
 .hero-text-container {
-    position: absolute;
-    top: 48%;
-    left: 18%;
-    bottom: 0;
-    right: 0;
+  position: absolute;
+  top: 48%;
+  left: 18%;
+  bottom: 0;
+  right: 0;
 }
 
 section .hero-text-container .button.btn-solid.button-secondary.shop-cta:hover {
-    background-color: var(--secondary-light);
+  background-color: var(--secondary-light);
 }
 
 .router-link {
-    color: var(--font-color);
+  color: var(--font-color);
 }
 
 .home-intro {
-    background-color: var(--secondary-light);
-    padding: 4rem 12rem;
-    text-align: center;
-    line-height: 1.5;
-    height: fit-content;
-    width: 100%;
+  background-color: var(--secondary-light);
+  padding: 4rem 12rem;
+  text-align: center;
+  line-height: 1.5;
+  height: fit-content;
+  width: 100%;
 }
 
 .home-main {
-    padding: 4rem 12rem;
+  padding: 4rem 12rem;
 }
 
 .categories-container p {
-    text-align: center;
+  text-align: center;
 }
 
 .categories-container {
-    color: var(--font-color);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .categories-container .card.card-vertical.ecomm-card {
-    height: 20rem;
+  height: 20rem;
 }
 
 .categories-container .card.card-vertical.ecomm-card:hover {
-    transition-delay: 20ms;
+  transition-delay: 20ms;
 }
 
 .categories-container .card.card-vertical.ecomm-card .ecomm-card-heading {
-    margin: var(--size-0-5) 0;
-    font-size: 1.1rem;
+  margin: var(--size-0-5) 0;
+  font-size: 1.1rem;
 }
 
 .categories-container .card.card-vertical.ecomm-card .vt-card-img {
-    max-width: 10rem;
-    max-height: 15rem;
-    width: 10rem;
-    height: 15rem;
+  max-width: 10rem;
+  max-height: 15rem;
+  width: 10rem;
+  height: 15rem;
 }
 
 @import url(../../styles/main.css);

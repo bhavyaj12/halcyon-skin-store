@@ -1,3 +1,3 @@
-import SiteRoutes from './Routes';
+import SiteRoutes from "./Routes";
 
 export { SiteRoutes as Routes };

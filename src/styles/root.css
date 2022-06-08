@@ -1,9 +1,9 @@
 :root {
-    --search-bg: #f2f2f2;
-    --search-border: #949292;
-    --nav-bg: #F5E5F2;
-    --shop-cta-btn: #C4A784;
-    --logout-btn: #dc3545;
-    --error-msg: #FF0000;
-    font-size: 80%;
+  --search-bg: #f2f2f2;
+  --search-border: #949292;
+  --nav-bg: #f5e5f2;
+  --shop-cta-btn: #c4a784;
+  --logout-btn: #dc3545;
+  --error-msg: #ff0000;
+  font-size: 80%;
 }

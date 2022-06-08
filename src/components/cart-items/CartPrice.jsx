@@ -1,23 +1,29 @@
 import { useCart } from "../../contexts";
 
-export default function CartPrice() {
+const CartPrice = () => {
   const { cartState } = useCart();
   const itemsPrice = cartState.cart.reduce(
-    (acc, curr) => acc + Number(curr.originalPrice) * Number(curr.quantity),
+    (acc, curr) => acc + Number(curr.originalPrice) * Number(curr.qty),
+    0
+  );
+  const numItems = cartState.cart.reduce(
+    (acc, curr) => acc + Number(curr.qty),
     0
   );
   const checkoutDiscount = cartState.cart.reduce(
-    (acc, curr) => acc + Number(curr.originalPrice - curr.discountPrice) * Number(curr.quantity),
+    (acc, curr) =>
+      acc +
+      Number(curr.originalPrice - curr.discountPrice) * Number(curr.qty),
     0
   );
-  
+
   return (
     <div className="cart-checkout px-5">
       <div className="card card-text-only card-flex">
         <h5 className="h5">Price Details</h5>
         <div className="cart-price-row">
-          <p>Items in your bag</p>
-          <p>{cartState.cart.length}</p>
+          <p>No. of items in your bag</p>
+          <p>{numItems}</p>
         </div>
         <div className="cart-price-row">
           <p>Sub Total</p>
@@ -43,4 +49,6 @@ export default function CartPrice() {
       </div>
     </div>
   );
-}
+};
+
+export default CartPrice;

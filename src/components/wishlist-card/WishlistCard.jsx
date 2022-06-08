@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { useWishlist, useCart } from "../../contexts";
+import { useNavigate } from "react-router-dom";
+import { useWishlist, useCart, useAuth } from "../../contexts";
+import { addToCart, removeFromWishlist } from "../../utilities";
 import "../../styles/main.css";
 import "../../components/product-list/product-list.css";
 
-export default function WishlistCard({ product }) {
+const WishlistCard = ({ product }) => {
   const {
     _id,
     name,
@@ -19,6 +20,11 @@ export default function WishlistCard({ product }) {
   } = product;
   const { wishDispatch } = useWishlist();
   const { cartState, cartDispatch } = useCart();
+  const {
+    auth: { token },
+  } = useAuth();
+  const navigate = useNavigate();
+
   const discountValid = discountRate === 0 ? false : true;
   return (
     <div className="card card-vertical card-shadow" id={_id}>
@@ -55,17 +61,16 @@ export default function WishlistCard({ product }) {
         </div>
         <div className="card-vt-btn mt-5 ">
           {cartState.cart.find((item) => item._id === _id) ? (
-            <Link to="/cart" className="link-router">
-              <button className="button btn-solid button-primary btn-go-to-cart">
-                Go to Cart
-              </button>
-            </Link>
+            <button
+              className="button button-primary button-text-icon"
+              onClick={() => navigate("/cart")}
+            >
+              <span>Go to Cart</span>
+            </button>
           ) : (
             <button
               className="button button-primary button-text-icon"
-              onClick={() =>
-                cartDispatch({ type: "ADD_TO_CART", payload: product })
-              }
+              onClick={() => addToCart(product, token, cartDispatch)}
             >
               <span>
                 <i className="fas fa-shopping-cart"></i> Move to Cart
@@ -75,12 +80,7 @@ export default function WishlistCard({ product }) {
 
           <button
             className="button btn-outline button-secondary"
-            onClick={() =>
-              wishDispatch({
-                type: "REMOVE_FROM_WISHLIST",
-                payload: _id,
-              })
-            }
+            onClick={() => removeFromWishlist(_id, token, wishDispatch)}
           >
             <span>
               <i className="far fa-trash-alt"></i>
@@ -90,4 +90,6 @@ export default function WishlistCard({ product }) {
       </div>
     </div>
   );
-}
+};
+
+export default WishlistCard;

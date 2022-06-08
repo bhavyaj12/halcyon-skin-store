@@ -4,7 +4,7 @@ import { CartCard, CartPrice } from "../../components";
 import { useCart } from "../../contexts";
 import "./cart.css";
 
-export default function CartPage() {
+const CartPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -38,4 +38,6 @@ export default function CartPage() {
       </section>
     </main>
   );
-}
+};
+
+export default CartPage;

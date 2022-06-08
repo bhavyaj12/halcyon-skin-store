@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./footer.css";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="footer" id="footer">
       <div className="footer-columns">
@@ -27,13 +27,19 @@ export default function Footer() {
           <nav className="col-list">
             <ul>
               <li>
-                <Link to="/products" href="./Product List/product.html">All Products</Link>
+                <Link to="/products">
+                  All Products
+                </Link>
               </li>
               <li>
-                <Link to="/cart" href="./Cart/cart.html">Cart</Link>
+                <Link to="/cart">
+                  Cart
+                </Link>
               </li>
               <li>
-                <Link to="/wishlist" href="./Wishlist/wishlist.html">Wishlist</Link>
+                <Link to="/wishlist">
+                  Wishlist
+                </Link>
               </li>
             </ul>
           </nav>
@@ -109,4 +115,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

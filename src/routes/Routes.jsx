@@ -1,15 +1,41 @@
-import { Routes, Route } from 'react-router-dom';
-import { LandingPage, CartPage, LoginPage, ProductsPage, SignupPage, WishlistPage } from '../pages/';
+import { Routes, Route } from "react-router-dom";
+import {
+  LandingPage,
+  CartPage,
+  LoginPage,
+  ProductsPage,
+  SignupPage,
+  WishlistPage,
+  InvalidPage,
+} from "../pages/";
+import RequiresAuth from "./RequiresAuth";
 
-export default function SiteRoutes() {
-    return (
-        <Routes>
-            <Route path="/" element={<LandingPage />} /> 
-            <Route path="/cart" element={<CartPage />} /> 
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="/wishlist" element={<WishlistPage />} />
-        </Routes>
-    );
-}
+const SiteRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/products" element={<ProductsPage />} />
+      <Route path="*" element={<InvalidPage />} />
+      <Route
+        path="/cart"
+        element={
+          <RequiresAuth>
+            <CartPage />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/wishlist"
+        element={
+          <RequiresAuth>
+            <WishlistPage />
+          </RequiresAuth>
+        }
+      />
+    </Routes>
+  );
+};
+
+export default SiteRoutes;

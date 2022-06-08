@@ -1,18 +1,21 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useToast } from "../../custom-hooks";
 import {
   filteredCatProducts,
   filteredPriceProducts,
   sortedProducts,
   filteredRatingProducts,
 } from "../../utilities/filterFunctions.js";
-import { useProduct } from "../../contexts";
+import { useAuth, useProduct } from "../../contexts";
 import { Filters } from "../../components";
 import { ProductList } from "../../components";
 import "./products-page.css";
 
-export default function ProductsPage() {
+const ProductsPage = () => {
   const { state, dispatch } = useProduct();
+  const { auth: token } = useAuth();
+  const { showToast } = useToast();
   const filteredPrice = filteredPriceProducts(state.products, state.price);
   const filteredCategory = filteredCatProducts(
     filteredPrice,
@@ -28,7 +31,7 @@ export default function ProductsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   useEffect(() => {
     (async () => {
       try {
@@ -37,10 +40,10 @@ export default function ProductsPage() {
         } = await axios.get("/api/products");
         dispatch({ type: "INIT_PRODUCTS", payload: products });
       } catch (error) {
-        console.log(error);
+        showToast("error", "Can't fetch products, try again later.")
       }
     })();
-  }, []);
+  }, [token]);
 
   return (
     <main className="products-filters-page">
@@ -48,4 +51,6 @@ export default function ProductsPage() {
       <ProductList products={finalProducts} />
     </main>
   );
-}
+};
+
+export default ProductsPage;

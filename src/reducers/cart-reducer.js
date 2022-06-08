@@ -1,36 +1,33 @@
 const CartReducer = (cartState, { type, payload }) => {
   switch (type) {
+    case "FETCH_CART":
+      return {
+        ...cartState,
+        cart: payload,
+      };
+
+    case "RESET_CART":
+      return {
+        ...cartState,
+        cart: [],
+      };
+
     case "REMOVE_FROM_CART":
       return {
         ...cartState,
-        cart: cartState.cart.filter((item) => item._id !== payload),
+        cart: payload,
       };
 
     case "ADD_TO_CART":
       return {
         ...cartState,
-        cart: [...cartState.cart, { ...payload, quantity: 1 }],
+        cart: payload,
       };
 
-    case "INCREASE_QUANTITY":
+    case "UPDATE_CART_QUANT":
       return {
         ...cartState,
-        cart: cartState.cart.map((item) =>
-          item._id === payload ? { ...item, quantity: item.quantity + 1 } : item
-        ),
-      };
-
-    case "DECREASE_QUANTITY":
-      return {
-        ...cartState,
-        cart: cartState.cart.map((item) =>
-          item._id === payload
-            ? {
-                ...item,
-                quantity: item.quantity > 1 ? item.quantity - 1 : item.quantity,
-              }
-            : item
-        ),
+        cart: payload,
       };
 
     default:

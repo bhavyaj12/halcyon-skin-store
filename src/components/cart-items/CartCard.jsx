@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../../contexts";
-import { useWishlist } from "../../contexts";
+import { useWishlist, useAuth, useCart } from "../../contexts";
+import { removeFromCart, updateQuantity, addToWishlist } from "../../utilities";
 import "../../pages/cart-page/cart.css";
 
-export default function CartCard({ product }) {
+const CartCard = ({ product }) => {
   const {
     _id,
     name,
@@ -12,9 +12,11 @@ export default function CartCard({ product }) {
     originalPrice,
     discountRate,
     coverImg,
-    quantity,
+    qty,
   } = product;
-
+  const {
+    auth: { token },
+  } = useAuth();
   const { cartDispatch } = useCart();
   const { wishState, wishDispatch } = useWishlist();
   const discountValid = discountRate === 0 ? false : true;
@@ -48,7 +50,7 @@ export default function CartCard({ product }) {
           <button
             className="button btn-outline button-secondary quant-btn"
             onClick={() =>
-              cartDispatch({ type: "DECREASE_QUANTITY", payload: _id })
+              updateQuantity("decrement", _id, token, cartDispatch)
             }
           >
             <span>
@@ -56,12 +58,12 @@ export default function CartCard({ product }) {
             </span>
           </button>
           <button className="button btn-outline button-secondary">
-            <span>{quantity}</span>
+            <span>{qty}</span>
           </button>
           <button
             className="button btn-outline button-secondary quant-btn"
             onClick={() =>
-              cartDispatch({ type: "INCREASE_QUANTITY", payload: _id })
+              updateQuantity("increment", _id, token, cartDispatch)
             }
           >
             <span>
@@ -79,12 +81,7 @@ export default function CartCard({ product }) {
           ) : (
             <button
               className="button button-primary button-text-icon"
-              onClick={() =>
-                wishDispatch({
-                  type: "ADD_TO_WISHLIST",
-                  payload: product,
-                })
-              }
+              onClick={() => addToWishlist(product, token, wishDispatch)}
             >
               <span>
                 <i className="far fa-heart"></i>
@@ -94,9 +91,7 @@ export default function CartCard({ product }) {
           )}
           <button
             className="button btn-outline button-secondary"
-            onClick={() =>
-              cartDispatch({ type: "REMOVE_FROM_CART", payload: _id })
-            }
+            onClick={() => removeFromCart(_id, token, cartDispatch)}
           >
             <span>Remove from Cart</span>
           </button>
@@ -104,4 +99,6 @@ export default function CartCard({ product }) {
       </div>
     </div>
   );
-}
+};
+
+export default CartCard;

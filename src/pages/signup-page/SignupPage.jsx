@@ -1,15 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useToast } from "../../custom-hooks";
 import { useAuth } from "../../contexts";
 import { signupFunc } from "../../utilities/signupFunc";
 
 import "./signup.css";
 
-export default function SignupPage() {
+const SignupPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -17,26 +18,37 @@ export default function SignupPage() {
     password: "",
     confirmPassword: "",
   });
-  const redirect = useNavigate();
+  const navigate = useNavigate();
   const { setAuth } = useAuth();
+  const { showToast } = useToast();
   const [signupError, setSignupError] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPassVisible, setConfirmPassVisible] = useState(false);
 
   const signupSubmitHandler = async (user) => {
     const { encodedToken, createdUser } = await signupFunc(user);
     try {
       if (encodedToken) {
-        localStorage.setItem("AUTH_TOKEN", JSON.stringify(encodedToken));
-        localStorage.setItem("username", JSON.stringify(createdUser.firstName));
+        localStorage.setItem(
+          "HALCYON_AUTH_TOKEN",
+          JSON.stringify(encodedToken)
+        );
+        localStorage.setItem(
+          "halcyon_username",
+          JSON.stringify(createdUser.firstName)
+        );
         setAuth({
           isAuth: true,
           token: encodedToken,
           user: createdUser.firstName,
         });
-        redirect("/products");
+        showToast("success", "Signed up and logged in successfully.");
+        navigate("/products", { replace: true });
       } else {
-        throw new Error("Signup failed");
+        throw new Error("Signup failed, check details and try again.");
       }
     } catch (error) {
+      showToast("error", error.message);
       setSignupError(error.message);
     }
   };
@@ -103,7 +115,7 @@ export default function SignupPage() {
           </label>
           <div className="my-5 hide-pswrd">
             <input
-              type="password"
+              type={`${passwordVisible ? "text" : "password"}`}
               className="input-field"
               placeholder="Enter password"
               required
@@ -112,9 +124,23 @@ export default function SignupPage() {
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
-            <span>
-              <i className="fa fa-eye-slash"></i>
-            </span>
+            <button
+              className="hide-pass-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setPasswordVisible(!passwordVisible);
+              }}
+            >
+              {passwordVisible ? (
+                <span>
+                  <i className="fa fa-eye-slash"></i>
+                </span>
+              ) : (
+                <span>
+                  <i className="fa fa-eye"></i>
+                </span>
+              )}
+            </button>
           </div>
         </div>
         <div className="form-row flex">
@@ -123,7 +149,7 @@ export default function SignupPage() {
           </label>
           <div className="my-5 hide-pswrd">
             <input
-              type="password"
+              type={`${confirmPassVisible ? "text" : "password"}`}
               className="input-field"
               placeholder="Re-enter password"
               required
@@ -134,9 +160,23 @@ export default function SignupPage() {
                 setUser({ ...user, confirmPassword: e.target.value })
               }
             />
-            <span>
-              <i className="fa fa-eye-slash"></i>
-            </span>
+            <button
+              className="hide-pass-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setConfirmPassVisible(!confirmPassVisible);
+              }}
+            >
+              {confirmPassVisible ? (
+                <span>
+                  <i className="fa fa-eye-slash"></i>
+                </span>
+              ) : (
+                <span>
+                  <i className="fa fa-eye"></i>
+                </span>
+              )}
+            </button>
           </div>
         </div>
         {user.password !== user.confirmPassword && (
@@ -160,3 +200,5 @@ export default function SignupPage() {
     </main>
   );
 };
+
+export default SignupPage;
