@@ -6,6 +6,7 @@ import ProductList from "./product-list/ProductList";
 import WishlistCard from "./wishlist-card/WishlistCard";
 import CartCard from "./cart-items/CartCard";
 import CartPrice from "./cart-items/CartPrice";
+import Toast from "./Toast";
 
 export {
   NavigationTop,
@@ -16,4 +17,5 @@ export {
   WishlistCard,
   CartCard,
   CartPrice,
+  Toast
 };

@@ -1,5 +1,5 @@
 import { Routes } from "./routes";
-import { Footer, NavigationTop } from "./components";
+import { Footer, NavigationTop, Toast } from "./components";
 
 import "./App.css";
 
@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div className="App page-container">
       <NavigationTop />
+      <Toast />
       <Routes />
       <button
         className="button button-floating"
