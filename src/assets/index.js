@@ -15,6 +15,7 @@ import Bodycare2 from "./images/ProductImg/body2.jpg";
 import Bodycare3 from "./images/ProductImg/body3.jpg";
 import Bodycare4 from "./images/ProductImg/body4.jpg";
 import Bodycare5 from "./images/ProductImg/body5.jpg";
+import image404 from "./images/image-404.svg";
 
 export {
   Sunscreen1,
@@ -33,5 +34,6 @@ export {
   Bodycare2,
   Bodycare3,
   Bodycare4,
-  Bodycare5
+  Bodycare5,
+  image404
 };

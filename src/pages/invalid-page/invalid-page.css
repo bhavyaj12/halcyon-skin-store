@@ -1,0 +1,16 @@
+.image-404-container {
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-404-container img.error-404-img {
+  margin: 0 auto;
+  max-width: 50%;
+}
+
+.alert.alert-container.alert-error {
+  font-size: 1.4rem;
+  text-align: center;
+  width: 50%;
+}
