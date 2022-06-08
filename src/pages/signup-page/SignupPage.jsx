@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useToast } from "../../custom-hooks";
 import { useAuth } from "../../contexts";
 import { signupFunc } from "../../utilities/signupFunc";
 
@@ -17,8 +18,9 @@ const SignupPage = () => {
     password: "",
     confirmPassword: "",
   });
-  const redirect = useNavigate();
+  const navigate = useNavigate();
   const { setAuth } = useAuth();
+  const { showToast } = useToast();
   const [signupError, setSignupError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPassVisible, setConfirmPassVisible] = useState(false);
@@ -40,11 +42,13 @@ const SignupPage = () => {
           token: encodedToken,
           user: createdUser.firstName,
         });
-        redirect("/products");
+        showToast("success", "Signed up and logged in successfully.");
+        navigate("/products", { replace: true });
       } else {
-        throw new Error("Signup failed");
+        throw new Error("Signup failed, check details and try again.");
       }
     } catch (error) {
+      showToast("error", error.message);
       setSignupError(error.message);
     }
   };

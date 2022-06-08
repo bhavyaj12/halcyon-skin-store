@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 const useToast = () => {
   const showToast = (type, message) => {
     toast[type](message, {
-      position: "top-right",
-      autoClose: 2500,
+      position: "bottom-right",
+      autoClose: 1500,
       hideProgressBar: false,
       pauseOnHover: true,
       rtl: false,

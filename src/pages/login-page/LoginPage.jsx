@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts";
 import { loginFunc } from "../../utilities/loginFunc";
@@ -9,15 +9,16 @@ const LoginPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   let from = location.state?.from?.pathname || "/";
+  
   const { showToast } = useToast();
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
   const { setAuth } = useAuth();
-  const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -44,7 +45,6 @@ const LoginPage = () => {
           user: foundUser.firstName,
         }));
         showToast("success", "Logged in successfully.");
-        console.log(from);
         navigate(from, { replace: true });
       } else {
         throw new Error("Login failed! Check your filled details.");
