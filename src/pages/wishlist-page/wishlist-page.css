@@ -1,14 +1,20 @@
 .wishlist-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
   padding: var(--size-3);
-  grid-column-gap: var(--size-0-5);
-  grid-row-gap: var(--size-1);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   margin: auto;
 }
 
-.wishlist-container .alert-container .alert-error {
-  max-width: 30%;
+main.page-container.wishlist-alert {
+  display: flex;
+  align-items: center;
+}
+
+main.page-container.wishlist-alert .alert-container.alert-error {
+  text-align: center;
+  max-width: 60%;
 }
 
 .store-nav-bar .store-nav .fas.icon-active {
