@@ -1,14 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
+import { SearchBar } from "../../components";
 import storeLogo from "../../assets/images/HalcyonStoreLogo.png";
 import { useWishlist, useCart, useAuth } from "../../contexts";
 import "./navigation-top.css";
 
 const NavigationTop = () => {
   const { auth, setAuth } = useAuth();
-  const redirect = useNavigate();
+  const navigate = useNavigate();
 
-  const { cartState } = useCart();
-  const { wishState } = useWishlist();
+  const { cartState, cartDispatch } = useCart();
+  const { wishState, wishDispatch } = useWishlist();
   const signOutFunc = (setAuth) => {
     localStorage.removeItem("HALCYON_AUTH_TOKEN");
     localStorage.removeItem("halcyon_username");
@@ -17,7 +18,9 @@ const NavigationTop = () => {
       token: null,
       user: "",
     }));
-    redirect("/login");
+    cartDispatch({ type: "RESET_CART" });
+    wishDispatch({ type: "RESET_WISHLIST" });
+    navigate("/login");
   };
 
   return (
@@ -30,12 +33,7 @@ const NavigationTop = () => {
         </div>
         <div className="store-nav">
           <ul className="store-nav-links ul-no-decor display-flex">
-            <li className="search-bar">
-              <input type="search" placeholder="Search our skincare store " />
-              <label className="search-bar-icon">
-                <span className="fas fa-search"></span>
-              </label>
-            </li>
+          <SearchBar />
             <li>
               <Link to="/" className="button button-primary button-link active">
                 Home
@@ -64,38 +62,20 @@ const NavigationTop = () => {
               )}
             </li>
             <li>
-              {auth.isAuth !== true ? (
-                <Link to="/login">
-                  <div className="badge mx-4 ">
-                    <i className="fas fa-heart"></i>
-                    <div className="badge-no">{wishState.wishlist.length}</div>
-                  </div>
-                </Link>
-              ) : (
-                <Link to="/wishlist">
-                  <div className="badge mx-4 ">
-                    <i className="fas fa-heart"></i>
-                    <div className="badge-no">{wishState.wishlist.length}</div>
-                  </div>
-                </Link>
-              )}
-            </li>
-            <li>
-              {auth.isAuth !== true ? (
-                <Link to="/login">
-                  <div className="badge mx-4 ">
-                    <i className="fas fa-shopping-cart"></i>
-                    <div className="badge-no">{cartState.cart.length}</div>
-                  </div>
-                </Link>
-              ) : (
                 <Link to="/cart">
                   <div className="badge mx-4 ">
                     <i className="fas fa-shopping-cart"></i>
                     <div className="badge-no">{cartState.cart.length}</div>
                   </div>
                 </Link>
-              )}
+            </li>
+            <li>
+                <Link to="/wishlist">
+                  <div className="badge mx-4 ">
+                    <i className="fas fa-heart"></i>
+                    <div className="badge-no">{wishState.wishlist.length}</div>
+                  </div>
+                </Link>
             </li>
           </ul>
         </div>
