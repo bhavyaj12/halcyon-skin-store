@@ -20,6 +20,8 @@ const SignupPage = () => {
   const redirect = useNavigate();
   const { setAuth } = useAuth();
   const [signupError, setSignupError] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPassVisible, setConfirmPassVisible] = useState(false);
 
   const signupSubmitHandler = async (user) => {
     const { encodedToken, createdUser } = await signupFunc(user);
@@ -109,7 +111,7 @@ const SignupPage = () => {
           </label>
           <div className="my-5 hide-pswrd">
             <input
-              type="password"
+              type={`${passwordVisible ? "text" : "password"}`}
               className="input-field"
               placeholder="Enter password"
               required
@@ -118,9 +120,23 @@ const SignupPage = () => {
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
-            <span>
-              <i className="fa fa-eye-slash"></i>
-            </span>
+            <button
+              className="hide-pass-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setPasswordVisible(!passwordVisible);
+              }}
+            >
+              {passwordVisible ? (
+                <span>
+                  <i className="fa fa-eye-slash"></i>
+                </span>
+              ) : (
+                <span>
+                  <i className="fa fa-eye"></i>
+                </span>
+              )}
+            </button>
           </div>
         </div>
         <div className="form-row flex">
@@ -129,7 +145,7 @@ const SignupPage = () => {
           </label>
           <div className="my-5 hide-pswrd">
             <input
-              type="password"
+              type={`${confirmPassVisible ? "text" : "password"}`}
               className="input-field"
               placeholder="Re-enter password"
               required
@@ -140,9 +156,23 @@ const SignupPage = () => {
                 setUser({ ...user, confirmPassword: e.target.value })
               }
             />
-            <span>
-              <i className="fa fa-eye-slash"></i>
-            </span>
+            <button
+              className="hide-pass-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                setConfirmPassVisible(!confirmPassVisible);
+              }}
+            >
+              {confirmPassVisible ? (
+                <span>
+                  <i className="fa fa-eye-slash"></i>
+                </span>
+              ) : (
+                <span>
+                  <i className="fa fa-eye"></i>
+                </span>
+              )}
+            </button>
           </div>
         </div>
         {user.password !== user.confirmPassword && (

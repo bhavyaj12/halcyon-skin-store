@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts";
 import { loginFunc } from "../../utilities/loginFunc";
+import { useToast } from "../../custom-hooks/useToast";
 import "./login.css";
 
 const LoginPage = () => {
@@ -10,7 +11,7 @@ const LoginPage = () => {
   }, []);
 
   let from = location.state?.from?.pathname || "/";
-
+  const { showToast } = useToast();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -18,6 +19,7 @@ const LoginPage = () => {
   const { setAuth } = useAuth();
   const navigate = useNavigate();
   const [loginError, setLoginError] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const testLogin = {
     email: "guest@gmail.com",
@@ -41,11 +43,14 @@ const LoginPage = () => {
           token: encodedToken,
           user: foundUser.firstName,
         }));
+        showToast("success", "Logged in successfully.");
+        console.log(from);
         navigate(from, { replace: true });
       } else {
         throw new Error("Login failed! Check your filled details.");
       }
     } catch (error) {
+      showToast("error", error.message);
       setLoginError(error.message);
     }
   };
@@ -75,7 +80,7 @@ const LoginPage = () => {
         />
         <div className="my-5 hide-pswrd">
           <input
-            type="password"
+            type={`${passwordVisible ? "text" : "password"}`}
             className="input-field"
             placeholder="Enter password"
             required
@@ -84,19 +89,22 @@ const LoginPage = () => {
             value={user.password}
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
-          <span>
-            <i className="fa fa-eye-slash"></i>
-          </span>
-        </div>
-        <div className="forgot-pwd-row my-5">
-          <div className="remember-chkbox">
-            <input type="checkbox" name="remember-me" id="remember-me" />
-            <label htmlFor="remember-me" className="mx-2">
-              Remember Me
-            </label>
-          </div>
-          <button className="button button-primary button-link">
-            Forgot Password?
+          <button
+            className="hide-pass-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              setPasswordVisible(!passwordVisible);
+            }}
+          >
+            {passwordVisible ? (
+              <span>
+                <i className="fa fa-eye-slash"></i>
+              </span>
+            ) : (
+              <span>
+                <i className="fa fa-eye"></i>
+              </span>
+            )}
           </button>
         </div>
         <button

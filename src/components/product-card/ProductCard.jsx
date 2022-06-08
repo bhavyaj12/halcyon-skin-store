@@ -57,13 +57,13 @@ const ProductCard = ({ product }) => {
               </span>
             </div>
             <div className="card-vt-btn mt-5 ">
-              <button className="button button-primary button-text-icon ">
+              <button className="button button-primary button-text-icon">
                 <span>
                   <i className="fas fa-shopping-cart"></i>
                   Add to Cart
                 </span>
               </button>
-              <button className="button btn-outline button-secondary ">
+              <button className="button btn-outline button-secondary">
                 <span>
                   <i className="far fa-heart"></i>
                 </span>
