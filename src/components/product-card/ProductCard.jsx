@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
-import { useWishlist, useCart } from "../../contexts";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth, useWishlist, useCart } from "../../contexts";
+import { addToCart, addToWishlist, removeFromWishlist } from "../../utilities";
 import "./product-card.css";
 
 const ProductCard = ({ product }) => {
@@ -19,6 +20,11 @@ const ProductCard = ({ product }) => {
   } = product;
   const { wishState, wishDispatch } = useWishlist();
   const { cartState, cartDispatch } = useCart();
+  const {
+    auth: { isAuth, token },
+  } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const discountValid = discountRate === 0 ? false : true;
   if (!inStock) {
@@ -111,16 +117,23 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="card-vt-btn mt-5">
           {cartState.cart.find((item) => item._id === _id) ? (
-            <Link to="/cart" className="link-router">
-              <button className="button btn-solid button-primary btn-go-to-cart">
-                Go to Cart
-              </button>
-            </Link>
+            <button
+              className="button button-primary button-text-icon"
+              onClick={() => navigate("/cart")}
+            >
+              <span>Go to Cart</span>
+            </button>
           ) : (
             <button
               className="button button-primary button-text-icon"
               onClick={() =>
-                cartDispatch({ type: "ADD_TO_CART", payload: product })
+                isAuth
+                  ? addToCart(product, token, cartDispatch)
+                  : navigate(
+                      "/login",
+                      { state: { from: location } },
+                      { replace: true }
+                    )
               }
             >
               <span>
@@ -130,15 +143,11 @@ const ProductCard = ({ product }) => {
             </button>
           )}
 
-          {wishState.wishlist.find((prod) => prod._id === _id) ? (
+          {wishState.wishlist.length !== 0 &&
+          wishState.wishlist.find((prod) => prod._id === _id) ? (
             <button
               className="button btn-outline button-secondary"
-              onClick={() =>
-                wishDispatch({
-                  type: "REMOVE_FROM_WISHLIST",
-                  payload: _id,
-                })
-              }
+              onClick={() => removeFromWishlist(_id, token, wishDispatch)}
             >
               <span>
                 <i className="fa fa-heart"></i>
@@ -148,10 +157,13 @@ const ProductCard = ({ product }) => {
             <button
               className="button btn-outline button-secondary"
               onClick={() =>
-                wishDispatch({
-                  type: "ADD_TO_WISHLIST",
-                  payload: product,
-                })
+                isAuth
+                  ? addToWishlist(product, token, wishDispatch)
+                  : navigate(
+                      "/login",
+                      { state: { from: location } },
+                      { replace: true }
+                    )
               }
             >
               <span>
