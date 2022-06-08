@@ -4,10 +4,12 @@ import { useAuth } from "../../contexts";
 import { loginFunc } from "../../utilities/loginFunc";
 import "./login.css";
 
-export default function LoginPage() {
+const LoginPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  let from = location.state?.from?.pathname || "/";
 
   const [user, setUser] = useState({
     email: "",
@@ -18,22 +20,28 @@ export default function LoginPage() {
   const [loginError, setLoginError] = useState("");
 
   const testLogin = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    email: "guest@gmail.com",
+    password: "guest1234",
   };
 
   const loginSubmitHandler = async (user) => {
     try {
       const { encodedToken, foundUser } = await loginFunc(user);
       if (encodedToken) {
-        localStorage.setItem("AUTH_TOKEN", JSON.stringify(encodedToken));
-        localStorage.setItem("username", JSON.stringify(foundUser.firstName));
+        localStorage.setItem(
+          "HALCYON_AUTH_TOKEN",
+          JSON.stringify(encodedToken)
+        );
+        localStorage.setItem(
+          "halcyon_username",
+          JSON.stringify(foundUser.firstName)
+        );
         setAuth(() => ({
           isAuth: true,
           token: encodedToken,
           user: foundUser.firstName,
-        }));    
-        navigate("/");
+        }));
+        navigate(from, { replace: true });
       } else {
         throw new Error("Login failed! Check your filled details.");
       }
@@ -124,3 +132,4 @@ export default function LoginPage() {
   );
 };
 
+export default LoginPage;

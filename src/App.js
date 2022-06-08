@@ -3,7 +3,7 @@ import { Footer, NavigationTop } from "./components";
 
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="App page-container">
       <NavigationTop />

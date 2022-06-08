@@ -3,15 +3,15 @@ import storeLogo from "../../assets/images/HalcyonStoreLogo.png";
 import { useWishlist, useCart, useAuth } from "../../contexts";
 import "./navigation-top.css";
 
-export default function NavigationTop() {
+const NavigationTop = () => {
   const { auth, setAuth } = useAuth();
   const redirect = useNavigate();
 
   const { cartState } = useCart();
   const { wishState } = useWishlist();
   const signOutFunc = (setAuth) => {
-    localStorage.removeItem("AUTH_TOKEN");
-    localStorage.removeItem("username");
+    localStorage.removeItem("HALCYON_AUTH_TOKEN");
+    localStorage.removeItem("halcyon_username");
     setAuth(() => ({
       isAuth: false,
       token: null,
@@ -102,4 +102,6 @@ export default function NavigationTop() {
       </nav>
     </header>
   );
-}
+};
+
+export default NavigationTop;

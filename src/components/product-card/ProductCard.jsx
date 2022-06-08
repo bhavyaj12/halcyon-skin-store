@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useWishlist, useCart } from "../../contexts";
 import "./product-card.css";
 
-export default function ProductCard({ product }) {
+const ProductCard = ({ product }) => {
   const {
     _id,
     name,
@@ -112,9 +112,9 @@ export default function ProductCard({ product }) {
         <div className="card-vt-btn mt-5">
           {cartState.cart.find((item) => item._id === _id) ? (
             <Link to="/cart" className="link-router">
-                <button className="button btn-solid button-primary btn-go-to-cart">
-                  Go to Cart
-                </button>
+              <button className="button btn-solid button-primary btn-go-to-cart">
+                Go to Cart
+              </button>
             </Link>
           ) : (
             <button
@@ -163,4 +163,6 @@ export default function ProductCard({ product }) {
       </div>
     </div>
   );
-}
+};
+
+export default ProductCard;

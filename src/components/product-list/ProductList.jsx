@@ -3,7 +3,7 @@ import "./product-list.css";
 
 import { ProductCard } from "../../components";
 
-export default function ProductList({ products }) {
+const ProductList = ({ products }) => {
   return (
     <div>
       <p className="num-products txt-normal">
@@ -13,7 +13,7 @@ export default function ProductList({ products }) {
       <section className="products-container">
         {products.length > 0 ? (
           products.map((item) => {
-            return <ProductCard product={item} key={item._id}/>;
+            return <ProductCard product={item} key={item._id} />;
           })
         ) : (
           <p className="alert-container alert-error txt-medium">
@@ -23,4 +23,6 @@ export default function ProductList({ products }) {
       </section>
     </div>
   );
-}
+};
+
+export default ProductList;

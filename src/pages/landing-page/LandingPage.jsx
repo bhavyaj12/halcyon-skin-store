@@ -8,7 +8,7 @@ import featCardImg3 from "../../assets/images/LandingPage/feat-cat-moist.jpg";
 import featCardImg4 from "../../assets/images/LandingPage/feat-cat-clean.png";
 import featCardImg5 from "../../assets/images/LandingPage/feat-cat-body.jpg";
 
-export default function LandingPage() {
+const LandingPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -29,8 +29,9 @@ export default function LandingPage() {
             Inspired by the world's best skincare-making processes, Halcyon Skin
             Store focuses on curating the best of Indian beauty. We only carry
             products that combine powerful ingredients backed by years of
-            research & testing. Build a consistent self-care routine for your
-            skin type and preferences from the wide range of products we offer.
+            research &amp; testing. Build a consistent self-care routine for
+            your skin type and preferences from the wide range of products we
+            offer.
           </p>
         </article>
       </section>
@@ -119,4 +120,6 @@ export default function LandingPage() {
       </main>
     </div>
   );
-}
+};
+
+export default LandingPage;

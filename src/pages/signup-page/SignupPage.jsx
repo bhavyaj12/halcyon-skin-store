@@ -5,11 +5,11 @@ import { signupFunc } from "../../utilities/signupFunc";
 
 import "./signup.css";
 
-export default function SignupPage() {
+const SignupPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -25,8 +25,14 @@ export default function SignupPage() {
     const { encodedToken, createdUser } = await signupFunc(user);
     try {
       if (encodedToken) {
-        localStorage.setItem("AUTH_TOKEN", JSON.stringify(encodedToken));
-        localStorage.setItem("username", JSON.stringify(createdUser.firstName));
+        localStorage.setItem(
+          "HALCYON_AUTH_TOKEN",
+          JSON.stringify(encodedToken)
+        );
+        localStorage.setItem(
+          "halcyon_username",
+          JSON.stringify(createdUser.firstName)
+        );
         setAuth({
           isAuth: true,
           token: encodedToken,
@@ -160,3 +166,5 @@ export default function SignupPage() {
     </main>
   );
 };
+
+export default SignupPage;

@@ -11,7 +11,7 @@ import { Filters } from "../../components";
 import { ProductList } from "../../components";
 import "./products-page.css";
 
-export default function ProductsPage() {
+const ProductsPage = () => {
   const { state, dispatch } = useProduct();
   const filteredPrice = filteredPriceProducts(state.products, state.price);
   const filteredCategory = filteredCatProducts(
@@ -28,7 +28,7 @@ export default function ProductsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   useEffect(() => {
     (async () => {
       try {
@@ -48,4 +48,6 @@ export default function ProductsPage() {
       <ProductList products={finalProducts} />
     </main>
   );
-}
+};
+
+export default ProductsPage;

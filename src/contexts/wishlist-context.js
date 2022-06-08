@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer } from "react";
 import { WishlistReducer } from "../reducers";
 
 const WishlistContext = createContext();
-const useWishlist = () => useContext(WishlistContext);
 
 const WishlistProvider = ({ children }) => {
   const [wishState, wishDispatch] = useReducer(WishlistReducer, {
@@ -16,4 +15,5 @@ const WishlistProvider = ({ children }) => {
   );
 };
 
+const useWishlist = () => useContext(WishlistContext);
 export { useWishlist, WishlistProvider };

@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer } from "react";
 import { ProductReducer } from "../reducers";
 
 const ProductContext = createContext();
-const useProduct = () => useContext(ProductContext);
 
 const ProductProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductReducer, {
@@ -25,5 +24,7 @@ const ProductProvider = ({ children }) => {
     </ProductContext.Provider>
   );
 };
+
+const useProduct = () => useContext(ProductContext);
 
 export { useProduct, ProductProvider };

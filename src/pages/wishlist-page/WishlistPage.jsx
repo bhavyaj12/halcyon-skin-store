@@ -3,11 +3,11 @@ import { WishlistCard } from "../../components";
 import { useWishlist } from "../../contexts";
 import "./wishlist-page.css";
 
-export default function WishlistPage() {
+const WishlistPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   const { wishState } = useWishlist();
   return (
     <section>
@@ -16,7 +16,9 @@ export default function WishlistPage() {
       </div>
       {wishState.wishlist.length === 0 ? (
         <main className="wishlist-container page-container">
-            <div className="alert-container alert-error txt-normal">No items in Wishlist</div>
+          <div className="alert-container alert-error txt-normal">
+            No items in Wishlist
+          </div>
         </main>
       ) : (
         <main className="wishlist-container">
@@ -27,4 +29,6 @@ export default function WishlistPage() {
       )}
     </section>
   );
-}
+};
+
+export default WishlistPage;

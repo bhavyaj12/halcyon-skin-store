@@ -3,7 +3,7 @@ import { useCart } from "../../contexts";
 import { useWishlist } from "../../contexts";
 import "../../pages/cart-page/cart.css";
 
-export default function CartCard({ product }) {
+const CartCard = ({ product }) => {
   const {
     _id,
     name,
@@ -104,4 +104,6 @@ export default function CartCard({ product }) {
       </div>
     </div>
   );
-}
+};
+
+export default CartCard;

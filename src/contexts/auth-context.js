@@ -1,7 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
 
 const AuthContext = createContext();
-const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
@@ -12,9 +11,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     setAuth({
-      isAuth: JSON.parse(localStorage.getItem("AUTH_TOKEN")) ? true : false,
-      token: JSON.parse(localStorage.getItem("AUTH_TOKEN")),
-      user: JSON.parse(localStorage.getItem("username")),
+      isAuth: JSON.parse(localStorage.getItem("HALCYON_AUTH_TOKEN"))
+        ? true
+        : false,
+      token: JSON.parse(localStorage.getItem("HALCYON_AUTH_TOKEN")),
+      user: JSON.parse(localStorage.getItem("halcyon_username")),
     });
   }, []);
 
@@ -25,4 +26,6 @@ const AuthProvider = ({ children }) => {
   );
 };
 
+
+const useAuth = () => useContext(AuthContext);
 export { useAuth, AuthProvider };
