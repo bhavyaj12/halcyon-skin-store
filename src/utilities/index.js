@@ -11,6 +11,10 @@ import {
   removeFromWishlist,
 } from "./wishlistService";
 
+import {
+  fetchSingleProduct
+} from "./productService";
+
 export {
   fetchCart,
   addToCart,
@@ -19,4 +23,5 @@ export {
   fetchWishlist,
   addToWishlist,
   removeFromWishlist,
+  fetchSingleProduct
 };
