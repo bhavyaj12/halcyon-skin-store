@@ -140,3 +140,50 @@
     width: 8rem;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .store-nav.hamburger-nav {
+    position: fixed;
+    left: -100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    transition: 0.3s;
+  }
+
+  .store-nav.hamburger-nav.nav-active {
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--secondary-color);
+    align-items: center;
+  }
+
+  .store-nav-links li a,
+  .store-nav-bar .store-nav-links li .button {
+    font-size: 1.5rem;
+  }
+
+  .store-nav-bar .store-nav-links li .button.button-primary.btn-solid.logout-btn{
+    width: fit-content;
+  }
+
+  .store-nav-bar .store-nav-links li a i.fas {
+    font-size: 1.5rem;
+  }
+
+  .store-nav-links.display-flex {
+    flex-direction: column;
+    gap: 3rem;
+    height: 100%;
+    padding: 5rem;
+  }
+
+  .store-nav .store-nav-links .nav-search-bar .search-bar-icon {
+    width: var(--size-1);
+    line-height: 1.5;
+    font-size: var(--size-0-5);
+  }
+}
