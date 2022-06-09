@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "../../custom-hooks";
 import {
   filteredCatProducts,
@@ -8,8 +8,7 @@ import {
   filteredRatingProducts,
 } from "../../utilities/filterFunctions.js";
 import { useAuth, useProduct } from "../../contexts";
-import { Filters } from "../../components";
-import { ProductList } from "../../components";
+import { Filters, MobileFilters, ProductList } from "../../components";
 import "./products-page.css";
 
 const ProductsPage = () => {
@@ -27,6 +26,7 @@ const ProductsPage = () => {
   );
   const ratingFiltered = filteredRatingProducts(filteredCategory, state.rating);
   const finalProducts = sortedProducts(ratingFiltered, state.sortBy);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -40,16 +40,25 @@ const ProductsPage = () => {
         } = await axios.get("/api/products");
         dispatch({ type: "INIT_PRODUCTS", payload: products });
       } catch (error) {
-        showToast("error", "Can't fetch products, try again later.")
+        showToast("error", "Can't fetch products, try again later.");
       }
     })();
   }, [token]);
 
   return (
-    <main className="products-filters-page">
-      <Filters />
-      <ProductList products={finalProducts} />
-    </main>
+    <>
+      <div
+        className="mobile-filter-button"
+        onClick={() => setShowMobileFilters(!showMobileFilters)}
+      ><i className="fa fa-filter mr-1"></i>
+        Select Filters
+      </div>
+      {showMobileFilters && <MobileFilters />}
+      <main className="products-filters-page">
+        <Filters />
+        <ProductList products={finalProducts} />
+      </main>
+    </>
   );
 };
 
