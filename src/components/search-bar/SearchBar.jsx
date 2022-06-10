@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../contexts";
 import { useToast } from "../../custom-hooks";
@@ -30,6 +30,24 @@ const SearchBar = () => {
     );
   };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const debounceFunction = (callbackFn, delay) => {
+    let timer;
+    return (...args) => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      timer = setTimeout(() => callbackFn(...args), delay);
+    };
+  };
+
+  const debouncedSearch = useMemo(() => {
+    return debounceFunction(handleSearchChange, 700);
+  }, []);
+
   const searchList = searchForProducts(searchQuery).map((product) => (
     <li
       key={product._id}
@@ -50,8 +68,7 @@ const SearchBar = () => {
         <input
           type="search"
           placeholder="Search our skincare store"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={debouncedSearch}
         />
         <label className="search-bar-icon">
           <span className="fas fa-search"></span>
