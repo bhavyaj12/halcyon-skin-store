@@ -19,6 +19,7 @@ section .hero-text-container .button.btn-solid.button-secondary.shop-cta:hover {
 
 .router-link {
   color: var(--font-color);
+  cursor: pointer;
 }
 
 .home-intro {
