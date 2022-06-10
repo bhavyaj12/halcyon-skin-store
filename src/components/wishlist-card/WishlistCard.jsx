@@ -17,6 +17,7 @@ const WishlistCard = ({ product }) => {
     tag,
     coverImg,
     categoryName,
+    inStock,
   } = product;
   const { wishDispatch } = useWishlist();
   const { cartState, cartDispatch } = useCart();
@@ -67,7 +68,7 @@ const WishlistCard = ({ product }) => {
             >
               <span>Go to Cart</span>
             </button>
-          ) : (
+          ) : inStock ? (
             <button
               className="button button-primary button-text-icon"
               onClick={() => addToCart(product, token, cartDispatch)}
@@ -75,6 +76,10 @@ const WishlistCard = ({ product }) => {
               <span>
                 <i className="fas fa-shopping-cart"></i> Move to Cart
               </span>
+            </button>
+          ) : (
+            <button className="button button-primary btn-solid button-disabled">
+              <span>Out of Stock</span>
             </button>
           )}
 

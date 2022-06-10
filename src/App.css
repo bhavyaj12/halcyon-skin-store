@@ -4,3 +4,9 @@
   flex-direction: column;
   min-height: calc(100vh - 200px);
 }
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 60%;
+  }
+} 

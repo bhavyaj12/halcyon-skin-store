@@ -5,21 +5,23 @@ import "./App.css";
 
 const App = () => {
   return (
-    <div className="App page-container">
-      <NavigationTop />
-      <Toast />
-      <Routes />
-      <button
-        className="button button-floating"
-        onClick={() => {
-          window.scrollTo(0, 0);
-        }}
-      >
-        <i className="fas fa-arrow-up"></i>
-      </button>
+    <>
+      <div className="App page-container">
+        <NavigationTop />
+        <Toast />
+        <Routes />
+        <button
+          className="button button-floating"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
+          <i className="fas fa-arrow-up"></i>
+        </button>
+      </div>
       <Footer />
-    </div>
+    </>
   );
-}
+};
 
 export default App;

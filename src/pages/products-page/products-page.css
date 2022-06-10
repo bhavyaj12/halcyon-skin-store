@@ -1,3 +1,38 @@
 .products-filters-page {
   margin-bottom: 5rem;
 }
+
+.mobile-filter-button {
+  text-align: center;
+  padding: 1rem;
+  display: none;
+  background-color: var(--secondary-light);
+  border: 1px solid var(--grey-border);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  #filers {
+    display: none;
+  }
+
+  .filter-container {
+    display: none;
+  }
+
+  .products-filters-page {
+    margin: 0 5rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "main"
+      "main"
+      "main";
+  }
+
+  .mobile-filter-button {
+    display: block;
+  }
+}

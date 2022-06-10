@@ -1,5 +1,3 @@
-/* @import url(https://halcyon-ui.netlify.app/halcyon.css); */
-
 .cart-items {
   width: 60%;
   display: flex;
@@ -101,4 +99,24 @@
 
 .cart-quantity-container .button.quant-btn {
   border-radius: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .cart-cards-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cart-items {
+    border-right: none;
+  }
+
+  .cart-items, .cart-checkout {
+    width: 90%;
+  }
+
+  .card-hz-btn .button {
+    width: fit-content;
+  }
 }

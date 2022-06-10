@@ -2,6 +2,7 @@
   background: var(--footer-color);
   padding: 4rem 15rem;
   font-size: 1.2rem;
+  margin-top: 2rem;
 }
 
 .footer-columns {

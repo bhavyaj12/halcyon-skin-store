@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useProduct } from "../../contexts";
 import { useToast } from "../../custom-hooks";
 import axios from "axios";
@@ -8,6 +9,7 @@ const SearchBar = () => {
   const { state, dispatch } = useProduct();
   const { showToast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -32,7 +34,8 @@ const SearchBar = () => {
     <li
       key={product._id}
       onClick={(e) => {
-        setSearch("");
+        setSearchQuery("");
+        navigate(`/products/${product._id}`);
       }}
       className="search-result-item p-2 m-2"
       product={JSON.stringify(product)}

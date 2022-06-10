@@ -7,6 +7,7 @@ import {
   SignupPage,
   WishlistPage,
   InvalidPage,
+  SingleProductPage
 } from "../pages/";
 import RequiresAuth from "./RequiresAuth";
 
@@ -17,6 +18,7 @@ const SiteRoutes = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/products/:productId" element={<SingleProductPage />} />
       <Route path="*" element={<InvalidPage />} />
       <Route
         path="/cart"

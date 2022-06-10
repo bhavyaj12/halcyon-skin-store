@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useWishlist, useCart } from "../../contexts";
 import { addToCart, addToWishlist, removeFromWishlist } from "../../utilities";
 import "./product-card.css";
@@ -29,7 +29,11 @@ const ProductCard = ({ product }) => {
   const discountValid = discountRate === 0 ? false : true;
   if (!inStock) {
     return (
-      <div className="card card-vertical card-shadow pos-relative" id={_id}>
+      <div
+        className="card card-vertical card-shadow pos-relative"
+        id={_id}
+        onClick={() => navigate(`/products/${_id}`)}
+      >
         <div className="overlay-container">
           <div className="p-3 img-badge-container">
             {tag && <span className="vt-card-badge txt-small p-3">{tag}</span>}
@@ -90,6 +94,7 @@ const ProductCard = ({ product }) => {
           src={coverImg}
           alt="Purple Soap"
           className="img-responsive vt-card-img"
+          onClick={() => navigate(`/products/${_id}`)}
         />
       </div>
       <div className="vt-card-text p-3">
@@ -119,22 +124,26 @@ const ProductCard = ({ product }) => {
           {cartState.cart.find((item) => item._id === _id) ? (
             <button
               className="button button-primary button-text-icon"
-              onClick={() => navigate("/cart")}
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/cart");
+              }}
             >
               <span>Go to Cart</span>
             </button>
           ) : (
             <button
               className="button button-primary button-text-icon"
-              onClick={() =>
+              onClick={(e) => {
+                e.preventDefault();
                 isAuth
                   ? addToCart(product, token, cartDispatch)
                   : navigate(
                       "/login",
                       { state: { from: location } },
                       { replace: true }
-                    )
-              }
+                    );
+              }}
             >
               <span>
                 <i className="fas fa-shopping-cart"></i>
@@ -147,7 +156,10 @@ const ProductCard = ({ product }) => {
           wishState.wishlist.find((prod) => prod._id === _id) ? (
             <button
               className="button btn-outline button-secondary"
-              onClick={() => removeFromWishlist(_id, token, wishDispatch)}
+              onClick={(e) => {
+                e.preventDefault();
+                removeFromWishlist(_id, token, wishDispatch);
+              }}
             >
               <span>
                 <i className="fa fa-heart"></i>
@@ -156,15 +168,16 @@ const ProductCard = ({ product }) => {
           ) : (
             <button
               className="button btn-outline button-secondary"
-              onClick={() =>
+              onClick={(e) => {
+                e.preventDefault();
                 isAuth
                   ? addToWishlist(product, token, wishDispatch)
                   : navigate(
                       "/login",
                       { state: { from: location } },
                       { replace: true }
-                    )
-              }
+                    );
+              }}
             >
               <span>
                 <i className="far fa-heart"></i>

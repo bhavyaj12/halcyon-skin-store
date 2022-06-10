@@ -1,3 +1,7 @@
+.products-container .card.card-vertical .img-badge-container {
+  cursor: pointer;
+}
+
 .products-container .card.card-vertical .card-vt-btn {
   justify-content: left;
 }
