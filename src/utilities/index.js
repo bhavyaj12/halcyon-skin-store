@@ -11,9 +11,7 @@ import {
   removeFromWishlist,
 } from "./wishlistService";
 
-import {
-  fetchSingleProduct
-} from "./productService";
+import { fetchSingleProduct, fetchCategories } from "./productService";
 
 export {
   fetchCart,
@@ -23,5 +21,6 @@ export {
   fetchWishlist,
   addToWishlist,
   removeFromWishlist,
-  fetchSingleProduct
+  fetchSingleProduct,
+  fetchCategories,
 };

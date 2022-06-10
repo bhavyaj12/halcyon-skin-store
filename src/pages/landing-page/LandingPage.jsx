@@ -1,17 +1,37 @@
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import "./landing.css";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchCategories } from "../../utilities";
+import { useProduct } from "../../contexts";
+import { useToast } from "../../custom-hooks";
 import heroImg from "../../assets/images/LandingPage/hero-img.png";
-import featCardImg1 from "../../assets/images/LandingPage/feat-cat-sun.jpg";
-import featCardImg2 from "../../assets/images/LandingPage/feat-cat-serum.jpg";
-import featCardImg3 from "../../assets/images/LandingPage/feat-cat-moist.jpg";
-import featCardImg4 from "../../assets/images/LandingPage/feat-cat-clean.png";
-import featCardImg5 from "../../assets/images/LandingPage/feat-cat-body.jpg";
+import "./landing.css";
 
 const LandingPage = () => {
+  const { showToast } = useToast();
+  const { dispatch } = useProduct();
+  const [categoriesList, setCategoriesList] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    (async () => {
+      try {
+        const {
+          data: { categories },
+        } = await fetchCategories();
+        setCategoriesList(categories);
+      } catch (error) {
+        showToast("error", "Can't fetch categories, please try again later.");
+      }
+    })();
   }, []);
+
+  const selectCategoryHandler = (categoryName) => {
+    dispatch({ type: "CLEAR" });
+    dispatch({ type: categoryName.toUpperCase() });
+    navigate("/products");
+  };
 
   return (
     <div>
@@ -41,80 +61,34 @@ const LandingPage = () => {
           <p className="h3 text-center">Featured Categories</p>
 
           <div className="categories-container mt-7">
-            <Link to="/products" className="link-no-decor router-link">
-              <div className="card card-vertical ecomm-card card-shadow p-3">
-                <div className="img-badge-container">
-                  <img
-                    src={featCardImg1}
-                    alt="sunscreen sample"
-                    className="img-responsive vt-card-img"
-                  />
-                </div>
-                <div className="vt-card-text">
-                  <p className="ecomm-card-heading">Sunscreen</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/products" className="link-no-decor router-link">
-              <div className="card card-vertical ecomm-card card-shadow p-3">
-                <div className="img-badge-container">
-                  <img
-                    src={featCardImg2}
-                    alt="serum sample"
-                    className="img-responsive vt-card-img"
-                  />
-                </div>
-                <div className="vt-card-text">
-                  <p className="ecomm-card-heading">Serums</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/products" className="link-no-decor router-link">
-              <div className="card card-vertical ecomm-card card-shadow p-3">
-                <div className="img-badge-container">
-                  <img
-                    src={featCardImg3}
-                    alt="moisturizer sample"
-                    className="img-responsive vt-card-img"
-                  />
-                </div>
-                <div className="vt-card-text">
-                  <p className="ecomm-card-heading">Moisturizers</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/products" className="link-no-decor router-link">
-              <div className="card card-vertical ecomm-card card-shadow p-3">
-                <div className="img-badge-container">
-                  <img
-                    src={featCardImg4}
-                    alt="cleanser sample"
-                    className="img-responsive vt-card-img"
-                  />
-                </div>
-                <div className="vt-card-text">
-                  <p className="ecomm-card-heading">Cleanser</p>
-                </div>
-              </div>
-            </Link>
-
-            <Link to="/products" className="link-no-decor router-link">
-              <div className="card card-vertical ecomm-card card-shadow p-3">
-                <div className="img-badge-container">
-                  <img
-                    src={featCardImg5}
-                    alt="bodycare sample"
-                    className="img-responsive vt-card-img"
-                  />
-                </div>
-                <div className="vt-card-text">
-                  <p className="ecomm-card-heading my-1">Bodycare</p>
-                </div>
-              </div>
-            </Link>
+            {!categoriesList
+              ? null
+              : categoriesList.map((category) => {
+                  return (
+                    <div
+                      key={category._id}
+                      className="link-no-decor router-link"
+                      onClick={() =>
+                        selectCategoryHandler(category.categoryName)
+                      }
+                    >
+                      <div className="card card-vertical ecomm-card card-shadow p-3">
+                        <div className="img-badge-container">
+                          <img
+                            src={category.featCardImg}
+                            alt="sunscreen sample"
+                            className="img-responsive vt-card-img"
+                          />
+                        </div>
+                        <div className="vt-card-text">
+                          <p className="ecomm-card-heading">
+                            {category.categoryName}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
           </div>
         </section>
       </main>
