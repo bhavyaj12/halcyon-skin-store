@@ -14,8 +14,8 @@ const WishlistProvider = ({ children }) => {
   } = useAuth();
 
   useEffect(() => {
-    if(isAuth) {
-      fetchWishlist(wishDispatch, token)
+    if (isAuth) {
+      fetchWishlist(wishDispatch, token);
     }
   }, [token]);
 

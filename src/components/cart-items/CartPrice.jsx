@@ -12,8 +12,7 @@ const CartPrice = () => {
   );
   const checkoutDiscount = cartState.cart.reduce(
     (acc, curr) =>
-      acc +
-      Number(curr.originalPrice - curr.discountPrice) * Number(curr.qty),
+      acc + Number(curr.originalPrice - curr.discountPrice) * Number(curr.qty),
     0
   );
 

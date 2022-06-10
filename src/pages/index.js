@@ -15,5 +15,5 @@ export {
   SignupPage,
   WishlistPage,
   InvalidPage,
-  SingleProductPage
+  SingleProductPage,
 };

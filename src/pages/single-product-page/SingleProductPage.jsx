@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useWishlist, useCart } from "../../contexts";
-import { addToCart, addToWishlist, removeFromWishlist } from "../../utilities";
+import { addToCart, addToWishlist } from "../../utilities";
 import { fetchSingleProduct } from "../../utilities";
 import { useToast } from "../../custom-hooks";
 import "./single-product-page.css";

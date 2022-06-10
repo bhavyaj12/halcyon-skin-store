@@ -14,8 +14,8 @@ const CartProvider = ({ children }) => {
   } = useAuth();
 
   useEffect(() => {
-    if(isAuth) {
-      fetchCart(cartDispatch, token)
+    if (isAuth) {
+      fetchCart(cartDispatch, token);
     }
   }, [token]);
 

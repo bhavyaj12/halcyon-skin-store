@@ -50,7 +50,8 @@ const ProductsPage = () => {
       <div
         className="mobile-filter-button"
         onClick={() => setShowMobileFilters(!showMobileFilters)}
-      ><i className="fa fa-filter mr-1"></i>
+      >
+        <i className="fa fa-filter mr-1"></i>
         Select Filters
       </div>
       {showMobileFilters && <MobileFilters />}

@@ -27,19 +27,13 @@ const Footer = () => {
           <nav className="col-list">
             <ul>
               <li>
-                <Link to="/products">
-                  All Products
-                </Link>
+                <Link to="/products">All Products</Link>
               </li>
               <li>
-                <Link to="/cart">
-                  Cart
-                </Link>
+                <Link to="/cart">Cart</Link>
               </li>
               <li>
-                <Link to="/wishlist">
-                  Wishlist
-                </Link>
+                <Link to="/wishlist">Wishlist</Link>
               </li>
             </ul>
           </nav>

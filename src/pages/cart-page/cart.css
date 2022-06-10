@@ -112,7 +112,8 @@
     border-right: none;
   }
 
-  .cart-items, .cart-checkout {
+  .cart-items,
+  .cart-checkout {
     width: 90%;
   }
 

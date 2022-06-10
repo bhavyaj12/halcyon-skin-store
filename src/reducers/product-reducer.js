@@ -31,7 +31,7 @@ const ProductReducer = (state, action) => {
       return {
         ...state,
         categories: {
-          ...state["categories"],
+          ...state.categories,
           Sunscreen: !state.categories.Sunscreen,
         },
       };
@@ -40,7 +40,7 @@ const ProductReducer = (state, action) => {
       return {
         ...state,
         categories: {
-          ...state["categories"],
+          ...state.categories,
           Serums: !state.categories.Serums,
         },
       };
@@ -49,7 +49,7 @@ const ProductReducer = (state, action) => {
       return {
         ...state,
         categories: {
-          ...state["categories"],
+          ...state.categories,
           Moisturizers: !state.categories.Moisturizers,
         },
       };
@@ -58,7 +58,7 @@ const ProductReducer = (state, action) => {
       return {
         ...state,
         categories: {
-          ...state["categories"],
+          ...state.categories,
           Cleanser: !state.categories.Cleanser,
         },
       };
@@ -67,7 +67,7 @@ const ProductReducer = (state, action) => {
       return {
         ...state,
         categories: {
-          ...state["categories"],
+          ...state.categories,
           Bodycare: !state.categories.Bodycare,
         },
       };

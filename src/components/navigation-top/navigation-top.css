@@ -166,7 +166,10 @@
     font-size: 1.5rem;
   }
 
-  .store-nav-bar .store-nav-links li .button.button-primary.btn-solid.logout-btn{
+  .store-nav-bar
+    .store-nav-links
+    li
+    .button.button-primary.btn-solid.logout-btn {
     width: fit-content;
   }
 

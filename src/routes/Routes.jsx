@@ -7,7 +7,7 @@ import {
   SignupPage,
   WishlistPage,
   InvalidPage,
-  SingleProductPage
+  SingleProductPage,
 } from "../pages/";
 import RequiresAuth from "./RequiresAuth";
 

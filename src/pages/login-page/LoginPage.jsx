@@ -12,7 +12,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  
+
   const { showToast } = useToast();
   const [user, setUser] = useState({
     email: "",

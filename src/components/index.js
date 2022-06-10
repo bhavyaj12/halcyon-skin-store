@@ -21,5 +21,5 @@ export {
   CartPrice,
   Toast,
   SearchBar,
-  MobileFilters
+  MobileFilters,
 };
