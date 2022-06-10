@@ -1,4 +1,9 @@
 import { v4 as uuid } from "uuid";
+import featCardImg1 from "../../assets/images/LandingPage/feat-cat-sun.jpg";
+import featCardImg2 from "../../assets/images/LandingPage/feat-cat-serum.jpg";
+import featCardImg3 from "../../assets/images/LandingPage/feat-cat-moist.jpg";
+import featCardImg4 from "../../assets/images/LandingPage/feat-cat-clean.png";
+import featCardImg5 from "../../assets/images/LandingPage/feat-cat-body.jpg";
 
 /**
  * Category Database can be added here.
@@ -8,20 +13,32 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    categoryName: "Sunscreen",
+    description: "Protect your skin from UVA/UVB rays!",
+    featCardImg: featCardImg1,
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "Serums",
+    description: "Deal with specific issues like spots, dull skin.",
+    featCardImg: featCardImg2,
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "Moisturizers",
+    description: "Nourish and smoothen skin.",
+    featCardImg: featCardImg3,
+  },
+  {
+    _id: uuid(),
+    categoryName: "Cleanser",
+    description: "Clean and brighten!",
+    featCardImg: featCardImg4,
+  },
+  {
+    _id: uuid(),
+    categoryName: "Bodycare",
+    description: "Take care of your body skin.",
+    featCardImg: featCardImg5,
   },
 ];
