@@ -1,0 +1,53 @@
+.address-card .hz-card-text {
+  width: 90%;
+  line-height: 1.5;
+  height: 90%;
+}
+
+.card.card-hz.address-card {
+  width: 40%;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.address-card div > p {
+  font-size: 1.1rem;
+}
+
+.address-card .card-hz-btn > button.button {
+  width: fit-content;
+}
+
+.add-address {
+  width: fit-content;
+  margin: 0 auto 1rem;
+}
+
+.add-address .button.btn-solid.button-primary {
+  border: none;
+}
+
+.address-card .button.btn-solid.button-secondary {
+  border: 2px solid var(--secondary-color);
+}
+
+.cart-cards-container.address-container div.no-address {
+  margin: auto;
+}
+
+.cart-cards-container.address-container
+  div.no-address
+  .alert-container.alert-error {
+  width: fit-content;
+}
+
+.cart-cards-container.address-container {
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+    .card.card-hz.address-card {
+    width: 90%;
+  }
+}
