@@ -13,6 +13,13 @@ import {
 
 import { fetchSingleProduct, fetchCategories } from "./productService";
 
+import {
+  fetchAddress,
+  addAddress,
+  editAddress,
+  removeAddress,
+} from "./addressService";
+
 export {
   fetchCart,
   addToCart,
@@ -23,4 +30,8 @@ export {
   removeFromWishlist,
   fetchSingleProduct,
   fetchCategories,
+  fetchAddress,
+  addAddress,
+  editAddress,
+  removeAddress,
 };
