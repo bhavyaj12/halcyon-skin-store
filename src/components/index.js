@@ -9,6 +9,8 @@ import CartPrice from "./cart-items/CartPrice";
 import Toast from "./Toast";
 import SearchBar from "./search-bar/SearchBar";
 import MobileFilters from "./mobile-filters/MobileFilters";
+import AddressCard from "./address-items/AddressCard";
+import AddressModal from "./address-items/AddressModal";
 
 export {
   NavigationTop,
@@ -22,4 +24,6 @@ export {
   Toast,
   SearchBar,
   MobileFilters,
+  AddressCard,
+  AddressModal
 };

@@ -29,6 +29,10 @@
   max-height: 25rem;
 }
 
+.cart-cards-container .button.btn-solid.button-primary {
+  border: none;
+}
+
 .cart-checkout {
   width: 40%;
 }
