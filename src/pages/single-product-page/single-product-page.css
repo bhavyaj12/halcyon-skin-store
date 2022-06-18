@@ -3,7 +3,7 @@
 }
 
 .single-product {
-  border: 2px solid var(--light-grey);
+  border: 1px solid var(--light-grey);
   padding: 4rem;
 }
 
@@ -28,6 +28,8 @@
 
 .single-product-details {
   display: grid;
+  border-left: 1px solid var(--light-grey);
+  text-align: center;
 }
 
 @media screen and (max-width: 500px) {

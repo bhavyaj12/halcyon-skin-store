@@ -5,6 +5,12 @@
   min-height: calc(100vh - 200px);
 }
 
+.btn-no-decor {
+  width: fit-content;
+  border: none;
+  margin: 1rem 0;
+}
+
 @media screen and (max-width: 500px) {
   :root {
     font-size: 60%;
