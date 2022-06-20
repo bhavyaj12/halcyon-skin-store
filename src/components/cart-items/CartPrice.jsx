@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useCart, useAddress } from "../../contexts";
+import { getCartData } from "../../utilities";
+import Coupons from "./Coupons";
 
 const CartPrice = () => {
   const { cartState } = useCart();
@@ -8,21 +10,10 @@ const CartPrice = () => {
   } = useAddress();
 
   const navigate = useNavigate();
+  const { itemsPrice, numItems, checkoutDiscount, grandTotal, couponDiscount } =
+    getCartData(cartState);
 
-  const itemsPrice = cartState.cart.reduce(
-    (acc, curr) => acc + Number(curr.originalPrice) * Number(curr.qty),
-    0
-  );
-  const numItems = cartState.cart.reduce(
-    (acc, curr) => acc + Number(curr.qty),
-    0
-  );
-  const checkoutDiscount = cartState.cart.reduce(
-    (acc, curr) =>
-      acc + Number(curr.originalPrice - curr.discountPrice) * Number(curr.qty),
-    0
-  );
-
+  const isCouponApplied = cartState.selectedCoupon ? true : false;
   const selectAddress = (e) => {
     e.preventDefault();
     navigate("/address");
@@ -45,17 +36,32 @@ const CartPrice = () => {
           <p className="discount">Free</p>
         </div>
         <div className="cart-price-row">
-          <p>Discount</p>
+          <p>Item Discount</p>
           <p className="discount">- ₹{checkoutDiscount}</p>
         </div>
-        <div className="cart-price-row txt-medium my-4">
+        {itemsPrice > 700 ? (
+          <div className="cart-price-row">
+            <Coupons />
+          </div>
+        ) : (
+          <div className="coupon-worth-msg">
+            Coupons available - add items to cart worth ₹{700 - itemsPrice}
+          </div>
+        )}
+        {isCouponApplied ? (
+          <div className="cart-price-row">
+            <p>Coupon Discount</p>
+            <p className="discount">- ₹{couponDiscount}</p>
+          </div>
+        ) : null}
+        <div className="cart-price-row txt-medium my-4 grand-total">
           <p className="cart-total">Grand Total</p>
-          <p className="cart-total">₹{itemsPrice - checkoutDiscount}</p>
+          <p className="cart-total">₹{grandTotal}</p>
         </div>
         <div className="cart-price-row my-6">
           {selectedAddress ? (
             <button className="button btn-solid button-primary cart-pay-btn">
-              <span>Place Order</span>
+              <span>Place Order &amp; Pay</span>
             </button>
           ) : (
             <button className="button btn-solid button-primary button-disabled cart-pay-btn">
