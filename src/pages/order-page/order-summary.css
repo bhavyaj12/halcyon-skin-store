@@ -1,0 +1,63 @@
+.order-summary-heading {
+  margin-top: 5rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.order-summary-card {
+  background-color: var(--list-bg);
+  width: fit-content;
+  height: fit-content;
+  margin: 1rem auto 4rem;
+  padding: var(--size-2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--size-1);
+}
+
+.items-ordered .card.card-hz .hz-card-img {
+  max-width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.items-ordered .card.card-hz {
+  height: fit-content;
+  max-height: 25rem;
+  width: 25rem;
+}
+
+.payment-details {
+  line-height: 1.5;
+}
+
+.payment-details .h3 {
+  border-bottom: 1px solid var(--grey-border);
+  font-family: "Montserrat", sans-serif;
+}
+
+.payment-details p {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 700px) {
+  .order-summary-card {
+    flex-direction: column;
+    flex-direction: column-reverse;
+  }
+
+  .items-ordered .card.card-hz {
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    max-height: fit-content;
+  }
+
+  .order-summary-card {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

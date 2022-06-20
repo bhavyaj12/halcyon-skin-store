@@ -8,7 +8,8 @@ import {
   WishlistPage,
   InvalidPage,
   SingleProductPage,
-  AddressPage
+  AddressPage,
+  OrderSummaryPage
 } from "../pages/";
 import RequiresAuth from "./RequiresAuth";
 import Mockman from "mockman-js";
@@ -44,6 +45,14 @@ const SiteRoutes = () => {
         element={
           <RequiresAuth>
             <AddressPage />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/order-summary"
+        element={
+          <RequiresAuth>
+            <OrderSummaryPage />
           </RequiresAuth>
         }
       />
