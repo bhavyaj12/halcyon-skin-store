@@ -1,13 +1,35 @@
 import { useNavigate } from "react-router-dom";
-import { useCart, useAddress } from "../../contexts";
+import { useCart, useAddress, useAuth, useOrder } from "../../contexts";
 import { getCartData } from "../../utilities";
+import { useToast } from "../../custom-hooks";
+import logo from "../../assets/images/logo192.png";
 import Coupons from "./Coupons";
 
 const CartPrice = () => {
-  const { cartState } = useCart();
+  const { cartState, cartDispatch } = useCart();
+  const {
+    auth: { userObj },
+  } = useAuth();
   const {
     addressState: { selectedAddress },
   } = useAddress();
+  const { setOrder } = useOrder();
+  const { showToast } = useToast();
+
+  const rzpUrl = "https://checkout.razorpay.com/v1/checkout.js";
+  const showCheckoutWithRazorpay = async (rzpUrl) => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = rzpUrl;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        reject(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
 
   const navigate = useNavigate();
   const { itemsPrice, numItems, checkoutDiscount, grandTotal, couponDiscount } =
@@ -17,6 +39,51 @@ const CartPrice = () => {
   const selectAddress = (e) => {
     e.preventDefault();
     navigate("/address");
+  };
+
+  const clearCart = () => {
+    cartDispatch({ type: "RESET_CART" });
+  };
+
+  const paymentHandler = async () => {
+    const response = await showCheckoutWithRazorpay(rzpUrl);
+    if (!response) {
+      showToast(
+        "error",
+        "Could not load razorpay payment options, please try again later or reload."
+      );
+      return;
+    }
+    const options = {
+      key: process.env.REACT_APP_RAZORPAY_KEY,
+      amount: grandTotal * 100,
+      currency: "INR",
+      name: "Halcyon Skin Store",
+      description: "Thank you for your order!",
+      image: logo,
+      handler: async function (response) {
+        const { razorpay_payment_id } = await response;
+        const orderDetails = {
+          paymentId: razorpay_payment_id,
+          amountPaid: grandTotal,
+          shippingAddress: { ...selectedAddress },
+          itemsOrdered: [...cartState.cart],
+        };
+        setOrder(orderDetails);
+        clearCart();
+        setTimeout(() => {
+          navigate("/order-summary");
+        }, 500);
+      },
+      prefill: {
+        name: `${userObj?.firstName} ${userObj?.lastName}`,
+        email: userObj?.email,
+        contact: "9121984305",
+      },
+      theme: { color: "#7e17c8" },
+    };
+    const rzpPaymentObj = new Razorpay(options);
+    rzpPaymentObj.open();
   };
 
   return (
@@ -60,7 +127,10 @@ const CartPrice = () => {
         </div>
         <div className="cart-price-row my-6">
           {selectedAddress ? (
-            <button className="button btn-solid button-primary cart-pay-btn">
+            <button
+              className="button btn-solid button-primary cart-pay-btn"
+              onClick={() => paymentHandler()}
+            >
               <span>Place Order &amp; Pay</span>
             </button>
           ) : (
