@@ -1,14 +1,11 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useAuth } from "../../contexts";
 import { loginFunc } from "../../utilities/loginFunc";
 import { useToast } from "../../custom-hooks/useToast";
 import "./login.css";
 
 const LoginPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -39,10 +36,15 @@ const LoginPage = () => {
           "halcyon_username",
           JSON.stringify(foundUser.firstName)
         );
+        localStorage.setItem(
+          "halcyon_user_obj",
+          JSON.stringify(foundUser)
+        );
         setAuth(() => ({
           isAuth: true,
           token: encodedToken,
           user: foundUser.firstName,
+          userObj: foundUser,
         }));
         showToast("success", "Logged in successfully.");
         navigate(from, { replace: true });

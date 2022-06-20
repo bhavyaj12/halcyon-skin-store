@@ -7,6 +7,7 @@ const AuthProvider = ({ children }) => {
     isAuth: false,
     token: "",
     user: "",
+    userObj: {},
   });
 
   useEffect(() => {
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
         : false,
       token: JSON.parse(localStorage.getItem("HALCYON_AUTH_TOKEN")),
       user: JSON.parse(localStorage.getItem("halcyon_username")),
+      userObj: JSON.parse(localStorage.getItem("halcyon_user_obj")),
     });
   }, []);
 

@@ -11,3 +11,7 @@
   .button.btn-solid.button-primary.btn-go-to-cart {
   width: 70%;
 }
+
+.card.card-vertical .vt-card-text .rating i.fas.fa-star {
+  color: var(--star-color);
+}

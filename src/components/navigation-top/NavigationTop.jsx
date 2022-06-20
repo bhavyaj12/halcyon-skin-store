@@ -21,10 +21,12 @@ const NavigationTop = () => {
   const signOutFunc = (setAuth) => {
     localStorage.removeItem("HALCYON_AUTH_TOKEN");
     localStorage.removeItem("halcyon_username");
+    localStorage.removeItem("halcyon_user_obj");
     setAuth(() => ({
       isAuth: false,
       token: null,
       user: "",
+      userObj: {},
     }));
     cartDispatch({ type: "RESET_CART" });
     wishDispatch({ type: "RESET_WISHLIST" });

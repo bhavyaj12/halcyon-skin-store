@@ -1,20 +1,91 @@
-import { useCart } from "../../contexts";
+import { useNavigate } from "react-router-dom";
+import { useCart, useAddress, useAuth, useOrder } from "../../contexts";
+import { getCartData, clearCart } from "../../utilities";
+import { useToast } from "../../custom-hooks";
+import logo from "../../assets/images/logo192.png";
+import Coupons from "./Coupons";
 
 const CartPrice = () => {
-  const { cartState } = useCart();
-  const itemsPrice = cartState.cart.reduce(
-    (acc, curr) => acc + Number(curr.originalPrice) * Number(curr.qty),
-    0
-  );
-  const numItems = cartState.cart.reduce(
-    (acc, curr) => acc + Number(curr.qty),
-    0
-  );
-  const checkoutDiscount = cartState.cart.reduce(
-    (acc, curr) =>
-      acc + Number(curr.originalPrice - curr.discountPrice) * Number(curr.qty),
-    0
-  );
+  const { cartState, cartDispatch } = useCart();
+  const {
+    auth: { token, userObj },
+  } = useAuth();
+  const {
+    addressState: { selectedAddress },
+  } = useAddress();
+  const { setOrder } = useOrder();
+  const { showToast } = useToast();
+
+  const rzpUrl = "https://checkout.razorpay.com/v1/checkout.js";
+  const showCheckoutWithRazorpay = async (rzpUrl) => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = rzpUrl;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        reject(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+  const navigate = useNavigate();
+  const { itemsPrice, numItems, checkoutDiscount, grandTotal, couponDiscount } =
+    getCartData(cartState);
+
+  const isCouponApplied = cartState.selectedCoupon ? true : false;
+  const selectAddress = (e) => {
+    e.preventDefault();
+    navigate("/address");
+  };
+
+  const clearCartHandler = async () => {
+    const clearedCart =  await clearCart(token);
+    cartDispatch({ type: "CLEAR_CART", payload: clearedCart });
+  };
+
+  const paymentHandler = async () => {
+    const response = await showCheckoutWithRazorpay(rzpUrl);
+    if (!response) {
+      showToast(
+        "error",
+        "Could not load razorpay payment options, please try again later or reload."
+      );
+      return;
+    }
+    const options = {
+      key: process.env.REACT_APP_RAZORPAY_KEY,
+      amount: grandTotal * 100,
+      currency: "INR",
+      name: "Halcyon Skin Store",
+      description: "Thank you for your order!",
+      image: logo,
+      handler: async function (response) {
+        const { razorpay_payment_id } = await response;
+        const orderDetails = {
+          paymentId: razorpay_payment_id,
+          amountPaid: grandTotal,
+          shippingAddress: { ...selectedAddress },
+          itemsOrdered: [...cartState.cart],
+        };
+        setOrder(orderDetails);
+        clearCartHandler();
+        setTimeout(() => {
+          navigate("/order-summary");
+        }, 500);
+      },
+      prefill: {
+        name: `${userObj?.firstName} ${userObj?.lastName}`,
+        email: userObj?.email,
+        contact: "8564786745",
+      },
+      theme: { color: "#7e17c8" },
+    };
+    const rzpPaymentObj = new Razorpay(options);
+    rzpPaymentObj.open();
+  };
 
   return (
     <div className="cart-checkout px-5">
@@ -33,18 +104,75 @@ const CartPrice = () => {
           <p className="discount">Free</p>
         </div>
         <div className="cart-price-row">
-          <p>Discount</p>
+          <p>Item Discount</p>
           <p className="discount">- ₹{checkoutDiscount}</p>
         </div>
-        <div className="cart-price-row txt-medium my-4">
+        {itemsPrice > 700 ? (
+          <div className="cart-price-row">
+            <Coupons />
+          </div>
+        ) : (
+          <div className="coupon-worth-msg">
+            Coupons available - add items to cart worth ₹{700 - itemsPrice} or more
+          </div>
+        )}
+        {isCouponApplied ? (
+          <div className="cart-price-row">
+            <p>Coupon Discount</p>
+            <p className="discount">- ₹{couponDiscount}</p>
+          </div>
+        ) : null}
+        <div className="cart-price-row txt-medium my-4 grand-total">
           <p className="cart-total">Grand Total</p>
-          <p className="cart-total">₹{itemsPrice - checkoutDiscount}</p>
+          <p className="cart-total">₹{grandTotal}</p>
         </div>
         <div className="cart-price-row my-6">
-          <a href="#" className="button btn-solid button-primary cart-pay-btn">
-            <span>Place Order</span>
-          </a>
+          {selectedAddress ? (
+            <button
+              className="button btn-solid button-primary cart-pay-btn"
+              onClick={() => paymentHandler()}
+            >
+              <span>Place Order &amp; Pay</span>
+            </button>
+          ) : (
+            <button className="button btn-solid button-primary button-disabled cart-pay-btn">
+              <span>Place Order</span>
+            </button>
+          )}
         </div>
+      </div>
+      <div className="card card-text-only card-flex">
+        <h5 className="h5">Selected Address</h5>
+        {selectedAddress ? (
+          <>
+            <p>{selectedAddress.name + " - " + selectedAddress.mobile}</p>
+            <p>
+              {selectedAddress.street +
+                ", " +
+                selectedAddress.city +
+                ", " +
+                selectedAddress.state +
+                " - " +
+                selectedAddress.zipCode}
+            </p>
+            <button
+              className="button btn-solid button-secondary btn-no-decor"
+              onClick={(e) => selectAddress(e)}
+            >
+              <span>Change Address</span>
+            </button>
+          </>
+        ) : (
+          <>
+            <p>Please select address to place order</p>
+            <button
+              className="button btn-solid button-secondary btn-no-decor"
+              onClick={(e) => selectAddress(e)}
+            >
+              <span>Select Address</span>
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

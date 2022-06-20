@@ -2,7 +2,7 @@
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.06);
   top: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 10;
   position: sticky;
 }
 
@@ -135,6 +135,10 @@
   left: var(--size-1-5);
 }
 
+.hamburger-menu {
+  display: none;
+}
+
 @media screen and (max-width: 1125px) {
   .store-nav ul li.search-bar {
     width: 8rem;
@@ -188,5 +192,9 @@
     width: var(--size-1);
     line-height: 1.5;
     font-size: var(--size-0-5);
+  }
+
+  .hamburger-menu {
+    display: block;
   }
 }

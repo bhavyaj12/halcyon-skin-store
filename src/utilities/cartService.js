@@ -57,4 +57,31 @@ const updateQuantity = async (type, _id, token, cartDispatch) => {
   }
 };
 
-export { fetchCart, addToCart, removeFromCart, updateQuantity };
+const fetchCoupons = async (cartDispatch) => {
+  try {
+    const { data } = await axios.get("/api/coupon");
+    cartDispatch({ type: "FETCH_COUPONS", payload: data.coupons });
+  } catch (error) {
+    showToast("error", "Can't fetch coupons, try again later or reload.");
+  }
+};
+
+const clearCart = async (token) => {
+  try {
+    const { data } = await axios.delete("/api/user/cart", {
+      headers: { authorization: token },
+    });
+    return data.cart;
+  } catch (error) {
+    showToast("error", "Can't clear the cart, try again later or reload.");
+  }
+};
+
+export {
+  fetchCart,
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  fetchCoupons,
+  clearCart,
+};

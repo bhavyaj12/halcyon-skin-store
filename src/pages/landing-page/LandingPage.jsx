@@ -13,8 +13,6 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     (async () => {
       try {
         const {

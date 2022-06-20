@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useWishlist, useAuth, useCart } from "../../contexts";
 import { removeFromCart, updateQuantity, addToWishlist } from "../../utilities";
 import "../../pages/cart-page/cart.css";
@@ -20,6 +20,8 @@ const CartCard = ({ product }) => {
   const { cartDispatch } = useCart();
   const { wishState, wishDispatch } = useWishlist();
   const discountValid = discountRate === 0 ? false : true;
+
+  const location = useLocation();
 
   return (
     <div className="card card-hz" id={_id}>
@@ -46,56 +48,61 @@ const CartCard = ({ product }) => {
             </span>
           )}
         </div>
-        <div className="cart-quantity-container">
-          <button
-            className="button btn-outline button-secondary quant-btn"
-            onClick={() =>
-              updateQuantity("decrement", _id, token, cartDispatch)
-            }
-          >
-            <span>
-              <i className="fas fa-minus"></i>
-            </span>
-          </button>
-          <button className="button btn-outline button-secondary">
-            <span>{qty}</span>
-          </button>
-          <button
-            className="button btn-outline button-secondary quant-btn"
-            onClick={() =>
-              updateQuantity("increment", _id, token, cartDispatch)
-            }
-          >
-            <span>
-              <i className="fas fa-plus"></i>
-            </span>
-          </button>
-        </div>
-        <div className="card-hz-btn mt-5 flex-col">
-          {wishState.wishlist.find((prod) => prod._id === _id) ? (
-            <Link to="/wishlist">
-              <button className="button btn-solid button-primary">
-                Go To Wishlist
-              </button>
-            </Link>
-          ) : (
+        {location.pathname !== "/order-summary" && (
+          <div className="cart-quantity-container">
             <button
-              className="button button-primary button-text-icon"
-              onClick={() => addToWishlist(product, token, wishDispatch)}
+              className="button btn-outline button-secondary quant-btn"
+              disabled={qty <= 1}
+              onClick={() =>
+                updateQuantity("decrement", _id, token, cartDispatch)
+              }
             >
               <span>
-                <i className="far fa-heart"></i>
-                Add to Wishlist
+                <i className="fas fa-minus"></i>
               </span>
             </button>
-          )}
-          <button
-            className="button btn-outline button-secondary"
-            onClick={() => removeFromCart(_id, token, cartDispatch)}
-          >
-            <span>Remove from Cart</span>
-          </button>
-        </div>
+            <button className="button btn-outline button-secondary">
+              <span>{qty}</span>
+            </button>
+            <button
+              className="button btn-outline button-secondary quant-btn"
+              onClick={() =>
+                updateQuantity("increment", _id, token, cartDispatch)
+              }
+            >
+              <span>
+                <i className="fas fa-plus"></i>
+              </span>
+            </button>
+          </div>
+        )}
+        {location.pathname !== "/order-summary" && (
+          <div className="card-hz-btn mt-5 flex-col">
+            {wishState.wishlist.find((prod) => prod._id === _id) ? (
+              <Link to="/wishlist">
+                <button className="button btn-solid button-primary">
+                  Go To Wishlist
+                </button>
+              </Link>
+            ) : (
+              <button
+                className="button button-primary button-text-icon"
+                onClick={() => addToWishlist(product, token, wishDispatch)}
+              >
+                <span>
+                  <i className="far fa-heart"></i>
+                  Add to Wishlist
+                </span>
+              </button>
+            )}
+            <button
+              className="button btn-outline button-secondary"
+              onClick={() => removeFromCart(_id, token, cartDispatch)}
+            >
+              <span>Remove from Cart</span>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

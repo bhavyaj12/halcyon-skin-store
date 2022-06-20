@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useToast } from "../../custom-hooks";
 import { useAuth } from "../../contexts";
 import { signupFunc } from "../../utilities/signupFunc";
@@ -7,10 +7,6 @@ import { signupFunc } from "../../utilities/signupFunc";
 import "./signup.css";
 
 const SignupPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -37,10 +33,15 @@ const SignupPage = () => {
           "halcyon_username",
           JSON.stringify(createdUser.firstName)
         );
+        localStorage.setItem(
+          "halcyon_user_obj",
+          JSON.stringify(createdUser)
+        );
         setAuth({
           isAuth: true,
           token: encodedToken,
           user: createdUser.firstName,
+          userObj: createdUser,
         });
         showToast("success", "Signed up and logged in successfully.");
         navigate("/products", { replace: true });
