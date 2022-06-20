@@ -78,7 +78,7 @@ const CartPrice = () => {
       prefill: {
         name: `${userObj?.firstName} ${userObj?.lastName}`,
         email: userObj?.email,
-        contact: "9121984305",
+        contact: "8564786745",
       },
       theme: { color: "#7e17c8" },
     };
