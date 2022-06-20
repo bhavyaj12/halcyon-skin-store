@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCart, useAddress, useAuth, useOrder } from "../../contexts";
-import { getCartData } from "../../utilities";
+import { getCartData, clearCart } from "../../utilities";
 import { useToast } from "../../custom-hooks";
 import logo from "../../assets/images/logo192.png";
 import Coupons from "./Coupons";
@@ -8,7 +8,7 @@ import Coupons from "./Coupons";
 const CartPrice = () => {
   const { cartState, cartDispatch } = useCart();
   const {
-    auth: { userObj },
+    auth: { token, userObj },
   } = useAuth();
   const {
     addressState: { selectedAddress },
@@ -41,8 +41,10 @@ const CartPrice = () => {
     navigate("/address");
   };
 
-  const clearCart = () => {
-    cartDispatch({ type: "RESET_CART" });
+  const clearCartHandler = async () => {
+    const clearedCart =  await clearCart(token);
+    console.log(clearedCart);
+    cartDispatch({ type: "CLEAR_CART", payload: clearedCart });
   };
 
   const paymentHandler = async () => {
@@ -70,7 +72,7 @@ const CartPrice = () => {
           itemsOrdered: [...cartState.cart],
         };
         setOrder(orderDetails);
-        clearCart();
+        clearCartHandler();
         setTimeout(() => {
           navigate("/order-summary");
         }, 500);
@@ -112,7 +114,7 @@ const CartPrice = () => {
           </div>
         ) : (
           <div className="coupon-worth-msg">
-            Coupons available - add items to cart worth ₹{700 - itemsPrice}
+            Coupons available - add items to cart worth ₹{700 - itemsPrice} or more
           </div>
         )}
         {isCouponApplied ? (

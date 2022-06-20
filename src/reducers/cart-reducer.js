@@ -51,6 +51,12 @@ const CartReducer = (cartState, { type, payload }) => {
         selectedCoupon: null,
       };
 
+    case "CLEAR_CART":
+      return {
+        ...cartState,
+        cart: payload,
+      };
+
     default:
       return cartState;
   }
