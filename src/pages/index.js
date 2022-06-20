@@ -7,6 +7,7 @@ import WishlistPage from "./wishlist-page/WishlistPage";
 import InvalidPage from "./invalid-page/InvalidPage";
 import SingleProductPage from "./single-product-page/SingleProductPage";
 import AddressPage from "./address-page/AddressPage";
+import OrderSummaryPage from "./order-page/OrderSummaryPage";
 
 export {
   LandingPage,
@@ -17,5 +18,6 @@ export {
   WishlistPage,
   InvalidPage,
   SingleProductPage,
-  AddressPage
+  AddressPage,
+  OrderSummaryPage
 };

@@ -20,7 +20,8 @@
   object-fit: cover;
 }
 
-.cart-cards-container .card.card-hz {
+.cart-cards-container .card.card-hz,
+.items-ordered .card.card-hz {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,6 +108,12 @@
 
 .cart-quantity-container .button.quant-btn {
   border-radius: 1rem;
+}
+
+.cart-quantity-container .button.quant-btn:disabled {
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
 }
 
 .coupon-toggle {
