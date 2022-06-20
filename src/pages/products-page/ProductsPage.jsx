@@ -29,10 +29,6 @@ const ProductsPage = () => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     (async () => {
       try {
         const {

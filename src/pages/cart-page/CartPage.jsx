@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 import { CartCard, CartPrice } from "../../components";
 import { useCart } from "../../contexts";
 import "./cart.css";
 
 const CartPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const { cartState } = useCart();
   return (
     <main className="cart-main-container">

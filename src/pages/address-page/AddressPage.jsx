@@ -1,12 +1,7 @@
-import { useEffect } from "react";
 import { AddressCard, AddressModal } from "../../components";
 import { useAddress } from "../../contexts";
 
 const AddressPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const {
     addressState: { addresses, showAddressModal },
     addressDispatch,

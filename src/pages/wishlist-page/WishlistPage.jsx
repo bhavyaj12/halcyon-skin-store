@@ -1,13 +1,8 @@
-import { useEffect } from "react";
 import { WishlistCard } from "../../components";
 import { useWishlist } from "../../contexts";
 import "./wishlist-page.css";
 
 const WishlistPage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const { wishState } = useWishlist();
   return (
     <section>
