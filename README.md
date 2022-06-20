@@ -16,6 +16,7 @@ https://user-images.githubusercontent.com/59730227/162255225-e83826cc-6d95-4e08-
 - Contains modular React components
 - Easy to use website
 - Modern and Clean Design
+- Fully responsive
 
 ## Project Screens and Functionality
 -  Home Page
@@ -43,18 +44,19 @@ https://user-images.githubusercontent.com/59730227/162255225-e83826cc-6d95-4e08-
 > - Button to add the product to the cart
 > - If the cart already contains that item, it's only increasing the quantity.
 
-## Features to be added (Work in Progress)
-- Cart and Wishlist according to user logged in (Right now it's implemented for current session without API calls)
-- Payment integration
-- Single Product Page
-- Address Management
-- Profile Page
+## Features that will improve the project
+- Infinite scroll
+- Profile page
+- Orders management
+- Pagination
+- Theme change
 
 ## Tech Stack
 - JavaScript
 - React.js
 - HTML
 - CSS
+- React Router 6
 
 ## Run Locally
 
