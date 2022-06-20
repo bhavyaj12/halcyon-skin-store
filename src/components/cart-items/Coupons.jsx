@@ -14,7 +14,6 @@ const Coupons = () => {
   };
 
   const applyCouponHandler = () => {
-    console.log(selectCoupon);
     cartDispatch({ type: "SET_SELECTED_COUPON", payload: selectCoupon });
     setShowCoupons(false);
   };

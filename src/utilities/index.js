@@ -3,6 +3,7 @@ import {
   addToCart,
   removeFromCart,
   updateQuantity,
+  fetchCoupons,
 } from "./cartService";
 
 import {
@@ -20,6 +21,8 @@ import {
   removeAddress,
 } from "./addressService";
 
+import { getCartData } from "./getCartData";
+
 export {
   fetchCart,
   addToCart,
@@ -34,4 +37,6 @@ export {
   addAddress,
   editAddress,
   removeAddress,
+  fetchCoupons,
+  getCartData
 };
