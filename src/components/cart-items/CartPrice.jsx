@@ -43,7 +43,6 @@ const CartPrice = () => {
 
   const clearCartHandler = async () => {
     const clearedCart =  await clearCart(token);
-    console.log(clearedCart);
     cartDispatch({ type: "CLEAR_CART", payload: clearedCart });
   };
 
