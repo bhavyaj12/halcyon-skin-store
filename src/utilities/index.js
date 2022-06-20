@@ -4,6 +4,7 @@ import {
   removeFromCart,
   updateQuantity,
   fetchCoupons,
+  clearCart,
 } from "./cartService";
 
 import {
@@ -38,5 +39,6 @@ export {
   editAddress,
   removeAddress,
   fetchCoupons,
-  getCartData
+  getCartData,
+  clearCart,
 };
