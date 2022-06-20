@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
 import { CartReducer } from "../reducers";
-import { fetchCart } from "../utilities";
+import { fetchCart, fetchCoupons } from "../utilities";
 import { useAuth } from "./auth-context";
 
 const CartContext = createContext();
@@ -8,6 +8,8 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cartState, cartDispatch] = useReducer(CartReducer, {
     cart: [],
+    coupons: [],
+    selectedCoupon: null,
   });
   const {
     auth: { isAuth, token },
@@ -16,6 +18,7 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     if (isAuth) {
       fetchCart(cartDispatch, token);
+      fetchCoupons(cartDispatch);
     }
   }, [token]);
 
