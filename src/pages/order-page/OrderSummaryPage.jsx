@@ -14,7 +14,7 @@ const OrderSummaryPage = () => {
           ))}
         </section>
         <section className="payment-details">
-          <h3 className="h3 order-confirm-msg py-2">Your order is confirmed</h3>
+          <h3 className="h3 order-confirm-msg py-2">Your order is confirmed!</h3>
           <p>Payment Receipt ID: {order.paymentId}</p>
           <p>Amount Paid: ₹{order.amountPaid}</p>
           <h3 className="h3 shipping-msg py-2">Shipping Details</h3>

@@ -34,19 +34,21 @@ const CartCard = ({ product }) => {
       <div className="hz-card-text p-3">
         <h5 className="h5">{name}</h5>
         <p>{brand}</p>
-        <div className="mt-5 card-price">
-          <span className="d-inline">₹ {discountPrice}</span>
-          {discountValid && (
-            <span className="txt-small ml-2 d-inline">
-              <strike>₹ {originalPrice}</strike>
-            </span>
-          )}
-          {discountValid && (
-            <span className="discount ml-2 txt-small txt-bold">
-              ( {discountRate}% OFF )
-            </span>
-          )}
-        </div>
+        {location.pathname !== "/order-summary" && (
+          <div className="mt-5 card-price">
+            <span className="d-inline">₹ {discountPrice}</span>
+            {discountValid && (
+              <span className="txt-small ml-2 d-inline">
+                <strike>₹ {originalPrice}</strike>
+              </span>
+            )}
+            {discountValid && (
+              <span className="discount ml-2 txt-small txt-bold">
+                ( {discountRate}% OFF )
+              </span>
+            )}
+          </div>
+        )}
         <div className="cart-quantity-container">
           {location.pathname !== "/order-summary" && (
             <button
