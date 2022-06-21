@@ -38,7 +38,8 @@
 .cart-cards-container.address-container
   div.no-address
   .alert-container.alert-error {
-  width: fit-content;
+  width: 25rem;
+  text-align: center;
 }
 
 .cart-cards-container.address-container {

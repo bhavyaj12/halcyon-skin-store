@@ -1,3 +1,18 @@
+.store-nav .search-bar .search-bar-icon {
+  background-color: var(--secondary-color);
+}
+
+.store-nav .search-bar {
+  height: 2.5rem;
+  border-radius: 3px;
+}
+
+.store-nav .search-bar label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search-container {
   position: relative;
 }
@@ -7,8 +22,11 @@
   background-color: var(--search-bg);
   width: 70%;
   left: 3rem;
-  border: 1px solid var(--font-color);
-  border-radius: 5px;
+  border: 1px solid var(--gray-txt);
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 24px 47px -15px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 0px 24px 47px -15px rgba(0, 0, 0, 0.44);
+  box-shadow: 0px 24px 47px -15px rgba(0, 0, 0, 0.44);
   z-index: 10;
 }
 

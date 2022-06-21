@@ -92,7 +92,7 @@ const ProductCard = ({ product }) => {
         {tag && <span className="vt-card-badge txt-small p-3">{tag}</span>}
         <img
           src={coverImg}
-          alt="Purple Soap"
+          alt="Product Image"
           className="img-responsive vt-card-img"
           onClick={() => navigate(`/products/${_id}`)}
         />

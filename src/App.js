@@ -18,7 +18,7 @@ const App = () => {
         <Toast />
         <Routes />
         <button
-          className="button button-floating"
+          className="button button-floating btn-no-decor"
           onClick={() => {
             window.scrollTo(0, 0);
           }}

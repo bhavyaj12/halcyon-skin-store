@@ -10,15 +10,13 @@ const Footer = () => {
           <nav className="col-list">
             <ul>
               <li>
-                <Link to="/">hello@halcyonskinstore.com</Link>
+                <p>hello@halcyonskinstore.com</p>
               </li>
               <li>
-                <Link to="/">Chat with Us</Link>
+                <p>Call Us - 1800 367 5644</p>
               </li>
-              <li>
-                <Link to="/">Call Us</Link>
-              </li>
-              <li>Weekdays 09:00 - 17:00 Weekends 11:00 - 16:00</li>
+              <li>Weekdays 09:00 - 17:00</li>
+              <li>Weekends 11:00 - 16:00</li>
             </ul>
           </nav>
         </span>
@@ -43,16 +41,16 @@ const Footer = () => {
           <nav className="col-list">
             <ul>
               <li>
-                <Link to="/">About Us</Link>
+                <p>Built in India</p>
               </li>
               <li>
-                <Link to="/">Sustainability</Link>
+                <p>Sustainable</p>
               </li>
               <li>
-                <Link to="/">Shipping Policy</Link>
+                <p>15-Day Return Policy</p>
               </li>
               <li>
-                <Link to="/">Privacy</Link>
+                <p>We Value Privacy</p>
               </li>
             </ul>
           </nav>

@@ -21,6 +21,14 @@ const SignupPage = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPassVisible, setConfirmPassVisible] = useState(false);
 
+  const testSignup = {
+    firstName: "Bhavya",
+    lastName: "Joshi",
+    email: "bhavya.j@gmail.com",
+    password: "check123",
+    confirmPassword: "check123",
+  };
+
   const signupSubmitHandler = async (user) => {
     const { encodedToken, createdUser } = await signupFunc(user);
     try {
@@ -33,10 +41,7 @@ const SignupPage = () => {
           "halcyon_username",
           JSON.stringify(createdUser.firstName)
         );
-        localStorage.setItem(
-          "halcyon_user_obj",
-          JSON.stringify(createdUser)
-        );
+        localStorage.setItem("halcyon_user_obj", JSON.stringify(createdUser));
         setAuth({
           isAuth: true,
           token: encodedToken,
@@ -52,6 +57,11 @@ const SignupPage = () => {
       showToast("error", error.message);
       setSignupError(error.message);
     }
+  };
+
+  const testSignupHandler = async (user) => {
+    setUser(testSignup);
+    signupSubmitHandler(user);
   };
 
   return (
@@ -188,6 +198,16 @@ const SignupPage = () => {
           disabled={user.password !== user.confirmPassword}
         >
           Sign Up
+        </button>
+        <button
+          className="button button-primary btn-solid login-btn"
+          disabled={user.password !== user.confirmPassword}
+          onClick={(e) => {
+            e.preventDefault();
+            testSignupHandler(testSignup);
+          }}
+        >
+          Sign Up With Test Credentials
         </button>
         {signupError !== "" && <p className="pswrd-match">{signupError}</p>}
         <div className="signup-msg my-5">
