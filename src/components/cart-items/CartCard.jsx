@@ -20,7 +20,6 @@ const CartCard = ({ product }) => {
   const { cartDispatch } = useCart();
   const { wishState, wishDispatch } = useWishlist();
   const discountValid = discountRate === 0 ? false : true;
-
   const location = useLocation();
 
   return (
@@ -48,8 +47,8 @@ const CartCard = ({ product }) => {
             </span>
           )}
         </div>
-        {location.pathname !== "/order-summary" && (
-          <div className="cart-quantity-container">
+        <div className="cart-quantity-container">
+          {location.pathname !== "/order-summary" && (
             <button
               className="button btn-outline button-secondary quant-btn"
               disabled={qty <= 1}
@@ -61,9 +60,11 @@ const CartCard = ({ product }) => {
                 <i className="fas fa-minus"></i>
               </span>
             </button>
-            <button className="button btn-outline button-secondary">
-              <span>{qty}</span>
-            </button>
+          )}
+          <button className="button btn-outline button-secondary">
+            <span>{qty}</span>
+          </button>
+          {location.pathname !== "/order-summary" && (
             <button
               className="button btn-outline button-secondary quant-btn"
               onClick={() =>
@@ -74,8 +75,8 @@ const CartCard = ({ product }) => {
                 <i className="fas fa-plus"></i>
               </span>
             </button>
-          </div>
-        )}
+          )}
+        </div>
         {location.pathname !== "/order-summary" && (
           <div className="card-hz-btn mt-5 flex-col">
             {wishState.wishlist.find((prod) => prod._id === _id) ? (

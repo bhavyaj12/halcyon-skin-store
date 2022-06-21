@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useWishlist, useCart } from "../../contexts";
 import { addToCart, addToWishlist, removeFromWishlist } from "../../utilities";
+import { useToast } from "../../custom-hooks";
 import "./product-card.css";
 
 const ProductCard = ({ product }) => {
@@ -23,8 +24,13 @@ const ProductCard = ({ product }) => {
   const {
     auth: { isAuth, token },
   } = useAuth();
+  const { showToast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
+  const navigateToLogin = () => {
+    navigate("/login", { state: { from: location } }, { replace: true });
+    showToast("error", "Please login to add items to cart and wishlist.");
+  };
 
   const discountValid = discountRate === 0 ? false : true;
   if (!inStock) {
@@ -138,11 +144,7 @@ const ProductCard = ({ product }) => {
                 e.preventDefault();
                 isAuth
                   ? addToCart(product, token, cartDispatch)
-                  : navigate(
-                      "/login",
-                      { state: { from: location } },
-                      { replace: true }
-                    );
+                  : navigateToLogin();
               }}
             >
               <span>
@@ -172,11 +174,7 @@ const ProductCard = ({ product }) => {
                 e.preventDefault();
                 isAuth
                   ? addToWishlist(product, token, wishDispatch)
-                  : navigate(
-                      "/login",
-                      { state: { from: location } },
-                      { replace: true }
-                    );
+                  : navigateToLogin();
               }}
             >
               <span>
