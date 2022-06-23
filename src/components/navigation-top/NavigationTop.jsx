@@ -80,20 +80,15 @@ const NavigationTop = () => {
                 <Link to="/login" className="button button-primary button-link">
                   <i className="fas fa-user"></i>Login
                 </Link>
-              ) : (
-                <button
-                  className="button button-primary btn-solid logout-btn"
-                  onClick={() => signOutFunc(setAuth)}
-                >
-                  Logout
-                </button>
-              )}
+              ) : null}
             </li>
             <li>
               <Link to="/cart">
                 <div className="badge mx-4 ">
                   <i className="fas fa-shopping-cart"></i>
-                  <div className="badge-no">{cartState.cart.length}</div>
+                  {cartState.cart.length > 0 && (
+                    <div className="badge-no">{cartState.cart.length}</div>
+                  )}
                 </div>
               </Link>
             </li>
@@ -101,10 +96,22 @@ const NavigationTop = () => {
               <Link to="/wishlist">
                 <div className="badge mx-4 ">
                   <i className="fas fa-heart"></i>
-                  <div className="badge-no">{wishState.wishlist.length}</div>
+                  {wishState.wishlist.length > 0 && (
+                    <div className="badge-no">{wishState.wishlist.length}</div>
+                  )}
                 </div>
               </Link>
             </li>
+            {auth.isAuth === true ? (
+              <li className="ml-3">
+                <button
+                  className="button button-primary btn-solid logout-btn"
+                  onClick={() => signOutFunc(setAuth)}
+                >
+                  Logout
+                </button>
+              </li>
+            ) : null}
           </ul>
         </div>
         <div

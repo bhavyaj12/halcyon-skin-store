@@ -89,6 +89,10 @@
   transition: 0.4s ease;
 }
 
+.store-nav-bar .store-nav .store-nav-links li div.badge i.fas {
+  font-size: 1.5rem;
+}
+
 .store-nav-bar .store-nav .store-nav-links li {
   position: relative;
 }
@@ -103,11 +107,13 @@
 }
 
 .button.button-primary.btn-solid.logout-btn {
-  width: 30%;
+  min-width: 0;
+  min-height: 0;
+  width: fit-content;
   margin: auto;
-  background: var(--logout-btn);
-  border: var(--logout-btn);
-  padding: var(--size-1);
+  background-color: var(--logout-btn);
+  border: var(--secondary-color);
+  padding: var(--size-0-5);
 }
 
 .store-nav-bar
