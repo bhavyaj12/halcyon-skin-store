@@ -29,7 +29,7 @@ const SingleProductPage = () => {
         showToast("error", "Can't fetch product, please try again later.");
       }
     })();
-  }, []);
+  }, [productId]);
 
   return !singleProduct ? (
     <main className="single-prod-container p-6">
