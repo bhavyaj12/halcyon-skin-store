@@ -15,6 +15,7 @@
 .single-prod-container .button.button-secondary.button-text-icon,
 .single-prod-container .button.button-primary.btn-solid.button-disabled {
   width: 60%;
+  border: none;
 }
 
 .single-product-price {
