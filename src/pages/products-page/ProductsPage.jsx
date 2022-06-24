@@ -52,7 +52,11 @@ const ProductsPage = () => {
       </div>
       {showMobileFilters && <MobileFilters />}
       <main className="products-filters-page">
-        <Filters />
+        <section id="filters">
+          <aside className="filter-container">
+            <Filters />
+          </aside>
+        </section>
         <ProductList products={finalProducts} />
       </main>
     </>
