@@ -44,6 +44,7 @@ const CartPrice = () => {
   const clearCartHandler = async () => {
     const clearedCart =  await clearCart(token);
     cartDispatch({ type: "CLEAR_CART", payload: clearedCart });
+    cartDispatch({ type: "SET_SELECTED_COUPON", payload: null });
   };
 
   const paymentHandler = async () => {
